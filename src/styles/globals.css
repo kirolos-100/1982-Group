@@ -7,3 +7,186 @@
     @apply text-white;
   }
 }
+
+
+/* 
+* {
+  
+  transition: 0.5s;
+}
+
+
+body::before {
+  content: "";
+  background-image: url(/1.png);
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.25);
+  z-index: -1;
+}
+
+ */
+
+
+
+* {
+    transition: 0.8s;
+}
+
+
+
+
+/* align-items: center; */
+ /* .main{
+    width: full;
+    height: 650px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    
+ } */
+
+
+/* hover effect */ 
+
+/* 
+.carddion {
+  
+  width: 10%;
+  border-radius: 15px;
+  cursor: pointer;
+  overflow: hidden;
+}
+.carddion:hover {
+  width: 80%;
+}
+
+.carddion .imageee {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.carddion:hover .imageee {
+  transform: scale(1.2);
+}
+
+.carddion .layer {
+  width: 100%;
+  height: 50%;
+  margin-top: -250px;
+  position: relative;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+}
+
+.carddion .layer .info {
+  width: 260px;
+  position: absolute;
+  bottom: 50px;
+  padding: 20px;
+  opacity: 0;
+}
+.carddion:hover .layer .info {
+  opacity: 1;
+}
+
+.carddion:hover .layer .info-1 {
+  opacity: 1;
+}
+
+.info p {
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 5px;
+}
+
+ */
+
+
+/* active effect with js */ 
+
+
+.main{
+  width: full;
+  height: 730px;
+  display: flex;
+  gap: 15px;
+  /* align-items: center; */
+  justify-content: center;
+  
+}
+
+
+.carddion {
+  
+  width: 10%;
+  border-radius: 15px;
+  cursor: pointer;
+  overflow: hidden;
+}
+.activecarddion {
+  width: 80%;
+  border-radius: 15px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.carddion .imageee {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.activecarddion .imageee {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.2);
+}
+
+.carddion .layer {
+  width: 100%;
+  height: 50%;
+  margin-top: -250px;
+  position: relative;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+}
+
+.carddion .layer .info {
+  width: 260px;
+  position: absolute;
+  bottom: 90px;
+  padding: 40px;
+  opacity: 0;
+}
+.activecarddion .layer .info {
+  width: 260px;
+  position: absolute;
+  bottom: 90px;
+  padding: 40px;
+  opacity: 1;
+}
+.carddion .layer .info-1{
+  width: 260px;
+  position: absolute;
+  padding: 20px;
+  gap: 12px;
+  display: flex;
+  bottom: 120px;
+  right:2px;
+  opacity: 0;
+
+}
+
+.activecarddion .layer .info-1 {
+  width: 260px;
+  position: absolute;
+  padding: 20px;
+  bottom: 120px;
+  right:2px;
+  gap: 12px;
+  display: flex;
+  opacity: 1;
+}
+
+.info p {
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 5px;
+}

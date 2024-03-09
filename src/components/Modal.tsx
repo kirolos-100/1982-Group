@@ -1,6 +1,13 @@
 import { X } from "react-feather"
 
-export default function Modal({ open, onClose, children }) {
+interface ModalProps {
+    open: boolean;
+    onClose: () => void;
+    children: React.ReactNode;
+}
+
+
+const Modal: React.FC<ModalProps> = ({ open, onClose, children }) => { 
     return (
         // backdrop
         <div
@@ -30,3 +37,4 @@ export default function Modal({ open, onClose, children }) {
         </div>
     )
 }
+export default Modal;

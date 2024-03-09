@@ -77,7 +77,6 @@ export default function Home() {
 
 
       {/* <p className="text-black">Landing page with parallax smooth scroll.</p> */}
-    
     </main>
   );
 }

@@ -44,17 +44,20 @@ import { Info, Trash } from 'react-feather';
 
 
 
+interface SectionProps {
+    activeCard: string | null; // Assuming activeCard is of type number or null
+}
 
 
-const Section = () => {
+const Section: React.FC<SectionProps> = ({ activeCard }) => {
 
-    const sectionRef = useRef(null);
+    /* const sectionRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: sectionRef,
         offset: ["start end", "end start"],
     });
 
-    const y = useTransform(scrollYProgress, [0, 1], ["-20%", "10%"]);
+    const y = useTransform(scrollYProgress, [0, 1], ["-20%", "10%"]); */
 
 
 
@@ -62,8 +65,30 @@ const Section = () => {
     const images = ["/1.png", "/2.png", "/3.png"];
     const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
-    /* modal state */ 
+    /* modal state */
     const [open, setOpen] = useState(false);
+
+
+    
+
+
+    /* desktop view and mobile view */
+
+    const [isDesktop, setIsDesktop] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsDesktop(window.innerWidth >= 768);
+        };
+
+        handleResize(); 
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
 
     /* clicked image expanding */
@@ -71,19 +96,17 @@ const Section = () => {
     useEffect(() => {
         const activecard = document.querySelectorAll('.carddion');
 
-    activecard.forEach(activecard => {
-        activecard.addEventListener('click', ()=>{
-            document.querySelector('.activecarddion')?.classList.remove('activecarddion');
-            activecard.classList.add('activecarddion');
+        activecard.forEach(activecard => {
+            activecard.addEventListener('click', () => {
+                document.querySelector('.activecarddion')?.classList.remove('activecarddion');
+                activecard.classList.add('activecarddion');
+            })
         })
-    })
 
-    },[])
-
-    
+    }, [])
 
 
-    
+
 
 
 
@@ -131,9 +154,6 @@ const Section = () => {
 
 
 
-
-
-
     /* thrid  */
     /*     const images = [
             { src: '/1.png', alt: 'Image 1' },
@@ -143,8 +163,6 @@ const Section = () => {
     
     
         const [expandedIndex, setExpandedIndex] = useState<number | null>(null); */
-
-
 
 
 
@@ -161,8 +179,6 @@ const Section = () => {
     const handleCloseImage = () => {
         setSelectedImage(null);
     }; */
-
-
 
 
 
@@ -197,10 +213,205 @@ const Section = () => {
 
         <>
 
+            {/* Desktop & Mobile */} 
+            {/* {isDesktop ? (
+
+                <section  id='82production' className='relative h-screen overflow-hidden  ' >
+
+                <motion.div className='absolute w-full h-[120%] -z-10'  >
+                    <div className='absolute inset-0 bg-black/30 z-10' />
+                    <div className='block md:hidden'>
+
+                        <Image src={Bg3} alt="fdf" fill className="object-right object-cover  md:object-cover w-full " />
+
+                    </div>
+
+                    <div className='hidden md:block '>
+                        <Image src={Bg1} alt="fdf" fill className="object-right object-cover  md:object-cover w-full blur-md " />
+
+                    </div>
+
+                </motion.div>
+
+                <div className=' absolute inset-0 pt-2 px-5 hidden md:block '>
+
+                    <div className='main '>
+
+                        <div className='carddion activecarddion ' id='82 Production'>
+                            <Image src={Bg1} alt='ff' className=' imageee ' />
+
+                            <div className="layer">
+                                <div className="info ">
+
+                                    <Image src={Bgs1} alt={'bg'} />
+                                </div>
+                                <div className='info-1'>
+
+                                    <div>
+                                        <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700' onClick={() => setOpen(true)}>Learn More </button>
+
+                                        <Modal open={open} onClose={() => setOpen(false)}>
+                                            <div className="text-center w-56">
+                                                <Info size={56} className="mx-auto text-green-500" />
+                                                <div className="mx-auto my-4 w-48">
+                                                    <h3 className="text-lg font-black text-gray-800">Learn More</h3>
+                                                    <p className="text-sm text-gray-500">
+                                                        At 1982 Group, we believe in the power of storytelling to inspire, captivate, and drive change. With a passion for cinematic excellence, we bring stories to life that resonate with audiences worldwide.
+                                                    </p>
+                                                </div>
+
+                                            </div>
+                                        </Modal>
+
+                                    </div>
+
+                                    <div>
+                                        <Image src={Play} alt='ff' className=' w-10 ' />
+                                    </div>
+
+                                </div>
 
 
-            <section ref={sectionRef} className='relative h-screen overflow-hidden md:hidden'>
-                <motion.div className='absolute w-full h-[120%] -z-10' style={{ top: y }}>
+
+                            </div>
+
+                        </div>
+
+                        <div className='carddion' id='HALA!'>
+                            <Image src={Bg2} alt='ff' className='  imageee ' />
+
+                            <div className="layer">
+                                <div className="info">
+                                    <h1 className='text-white text-7xl p-5'>HALA!</h1>
+
+                                </div>
+                                <div className='absolute flex bottom-20 right-10 gap-2 opacity-0 info-1'>
+
+                                    <div>
+                                        <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700' onClick={() => setOpen(true)}>Learn More </button>
+
+                                        <Modal open={open} onClose={() => setOpen(false)}>
+                                            <div className="text-center w-56">
+                                                <Info size={56} className="mx-auto text-green-500" />
+                                                <div className="mx-auto my-4 w-48">
+                                                    <h3 className="text-lg font-black text-gray-800">Learn More</h3>
+                                                    <p className="text-sm text-gray-500">
+                                                        At 1982 Group, we believe in the power of storytelling to inspire, captivate, and drive change. With a passion for cinematic excellence, we bring stories to life that resonate with audiences worldwide.
+                                                    </p>
+                                                </div>
+
+                                            </div>
+                                        </Modal>
+
+                                    </div>
+
+                                    <div>
+                                        <Image src={Play} alt='ff' className=' w-10 ' />
+                                    </div>
+
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+
+                        <div className='carddion' id='82 cinemas'>
+                            <Image src={Bg3} alt='ff' className='  imageee ' />
+
+                            <div className="layer">
+                                <div className="info">
+
+                                    <Image src={Bgs2} alt={'bg'} />
+                                </div>
+                                <div className='absolute flex bottom-20 right-10 gap-2 opacity-0 info-1'>
+
+                                    <div>
+                                        <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700' onClick={() => setOpen(true)}>Learn More </button>
+
+                                        <Modal open={open} onClose={() => setOpen(false)}>
+                                            <div className="text-center w-56">
+                                                <Info size={56} className="mx-auto text-green-500" />
+                                                <div className="mx-auto my-4 w-48">
+                                                    <h3 className="text-lg font-black text-gray-800">Learn More</h3>
+                                                    <p className="text-sm text-gray-500">
+                                                        At 1982 Group, we believe in the power of storytelling to inspire, captivate, and drive change. With a passion for cinematic excellence, we bring stories to life that resonate with audiences worldwide.
+                                                    </p>
+                                                </div>
+
+                                            </div>
+                                        </Modal>
+
+                                    </div>
+
+                                    <div>
+                                        <Image src={Play} alt='ff' className=' w-10 ' />
+                                    </div>
+
+                                </div>
+
+
+
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div className='absolute bottom-0 left-0 gap-4 p-10 md:hidden'>
+
+
+                    <Image src={Bgs2} alt='ff' className=' w-16 ' />
+
+
+                </div>
+
+
+
+                <div className='absolute flex bottom-0 right-0 gap-2 p-10 md:hidden'>
+
+                    <div>
+                        <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700' onClick={() => setOpen(true)}>Learn More </button>
+
+                        <Modal open={open} onClose={() => setOpen(false)}>
+                            <div className="text-center w-56">
+                                <Info size={56} className="mx-auto text-green-500" />
+                                <div className="mx-auto my-4 w-48">
+                                    <h3 className="text-lg font-black text-gray-800">Learn More</h3>
+                                    <p className="text-sm text-gray-500">
+                                        At 1982 Group, we believe in the power of storytelling to inspire, captivate, and drive change. With a passion for cinematic excellence, we bring stories to life that resonate with audiences worldwide.
+                                    </p>
+                                </div>
+
+                            </div>
+                        </Modal>
+
+
+
+                    </div>
+
+                    <div>
+                        <Image src={Play} alt='ff' className=' w-10 ' />
+                    </div>
+
+                </div>
+
+                </section>
+
+
+
+            ):
+            (
+                <>
+
+                <section  id='82production' className='relative h-screen overflow-hidden md:hidden'>
+                <motion.div className='absolute w-full h-[120%] -z-10' >
                     <div className='absolute inset-0 bg-black/30 z-10' />
                     <Image src={Bg1} alt="fdf" fill className="object-right object-cover  md:object-cover w-full " />
 
@@ -216,16 +427,167 @@ const Section = () => {
                         <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700' onClick={() => setOpen(true)}>Learn More </button>
 
                         <Modal open={open} onClose={() => setOpen(false)}>
-                                            <div className="text-center w-56">
-                                                <Info size={56} className="mx-auto text-green-500" />
-                                                <div className="mx-auto my-4 w-48">
-                                                    <h3 className="text-lg font-black text-gray-800">Learn More</h3>
-                                                    <p className="text-sm text-gray-500">
-                                                        At 1982 Group, we believe in the power of storytelling to inspire, captivate, and drive change. With a passion for cinematic excellence, we bring stories to life that resonate with audiences worldwide.
-                                                    </p>
-                                                </div>
-                                                
-                                            </div>
+                            <div className="text-center w-56">
+                                <Info size={56} className="mx-auto text-green-500" />
+                                <div className="mx-auto my-4 w-48">
+                                    <h3 className="text-lg font-black text-gray-800">Learn More</h3>
+                                    <p className="text-sm text-gray-500">
+                                        At 1982 Group, we believe in the power of storytelling to inspire, captivate, and drive change. With a passion for cinematic excellence, we bring stories to life that resonate with audiences worldwide.
+                                    </p>
+                                </div>
+
+                            </div>
+                        </Modal>
+
+                    </div>
+
+                    <div>
+                        <Image src={Play} alt='ff' className=' w-10 ' />
+                    </div>
+
+                </div>
+
+
+                </section>
+
+
+
+                <section  id='hala' className='relative h-screen overflow-hidden md:hidden'>
+                    <motion.div className='absolute w-full h-[120%] -z-10' >
+                        <div className='absolute inset-0 bg-black/30 z-10' />
+                        <Image src={Bg2} alt="fdf" fill className="object-right object-cover  md:object-cover w-full " />
+
+                    </motion.div>
+                    <div className='absolute bottom-0 left-0 gap-4 p-10'>
+
+
+                        <h1 className='text-5xl' >HALA!</h1>
+
+
+                    </div>
+
+                    <div className='absolute flex bottom-0 right-0 gap-2 p-10'>
+
+                        <div>
+                            <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700' onClick={() => setOpen(true)}>Learn More </button>
+
+                            <Modal open={open} onClose={() => setOpen(false)}>
+                                <div className="text-center w-56">
+                                    <Info size={56} className="mx-auto text-green-500" />
+                                    <div className="mx-auto my-4 w-48">
+                                        <h3 className="text-lg font-black text-gray-800">Learn More</h3>
+                                        <p className="text-sm text-gray-500">
+                                            At 1982 Group, we believe in the power of storytelling to inspire, captivate, and drive change. With a passion for cinematic excellence, we bring stories to life that resonate with audiences worldwide.
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </Modal>
+
+                        </div>
+
+                        <div>
+                            <Image src={Play} alt='ff' className=' w-10 ' />
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <section  id='82cinemas' className='relative h-screen overflow-hidden  ' >
+
+                <motion.div className='absolute w-full h-[120%] -z-10'  >
+                    <div className='absolute inset-0 bg-black/30 z-10' />
+                    <div className='block md:hidden'>
+
+                        <Image src={Bg3} alt="fdf" fill className="object-right object-cover  md:object-cover w-full " />
+
+                    </div>
+
+                    <div className='hidden md:block '>
+                        <Image src={Bg1} alt="fdf" fill className="object-right object-cover  md:object-cover w-full blur-md " />
+
+                    </div>
+
+                </motion.div>
+
+                
+
+                <div className='absolute bottom-0 left-0 gap-4 p-10 md:hidden'>
+
+
+                    <Image src={Bgs2} alt='ff' className=' w-16 ' />
+
+
+                </div>
+
+
+
+                <div className='absolute flex bottom-0 right-0 gap-2 p-10 md:hidden'>
+
+                    <div>
+                        <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700' onClick={() => setOpen(true)}>Learn More </button>
+
+                        <Modal open={open} onClose={() => setOpen(false)}>
+                            <div className="text-center w-56">
+                                <Info size={56} className="mx-auto text-green-500" />
+                                <div className="mx-auto my-4 w-48">
+                                    <h3 className="text-lg font-black text-gray-800">Learn More</h3>
+                                    <p className="text-sm text-gray-500">
+                                        At 1982 Group, we believe in the power of storytelling to inspire, captivate, and drive change. With a passion for cinematic excellence, we bring stories to life that resonate with audiences worldwide.
+                                    </p>
+                                </div>
+
+                            </div>
+                        </Modal>
+
+
+
+                    </div>
+
+                    <div>
+                        <Image src={Play} alt='ff' className=' w-10 ' />
+                    </div>
+
+                </div>
+
+                </section>
+
+                </>
+
+
+            )} */}
+
+
+
+
+            <section /* ref={sectionRef} */ id='82production' className='relative h-screen overflow-hidden md:hidden'>
+                <motion.div className='absolute w-full h-[120%] -z-10' /* style={{ top: y }} */>
+                    <div className='absolute inset-0 bg-black/30 z-10' />
+                    <Image src={Bg1} alt="fdf" fill className="object-right object-cover  md:object-cover w-full " />
+
+                </motion.div>
+                <div className='absolute bottom-0 left-0 gap-4 p-10'>
+                    <Image src={Bgs1} alt='ff' className=' w-28 ' />
+
+                </div>
+
+                <div className='absolute flex bottom-0 right-0 gap-2 p-10'>
+
+                    <div>
+                        <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium focus:outline-none  rounded-full border  focus:z-10 focus:ring-4  focus:ring-gray-700 bg-gray-800 text-gray-400 border-gray-600 hover:text-white hover:bg-gray-700' onClick={() => setOpen(true)}>Learn More </button>
+
+                        <Modal open={open} onClose={() => setOpen(false)}>
+                            <div className="text-center w-56">
+                                <Info size={56} className="mx-auto text-green-500" />
+                                <div className="mx-auto my-4 w-48">
+                                    <h3 className="text-lg font-black text-gray-800">Learn More</h3>
+                                    <p className="text-sm text-gray-500">
+                                        At 1982 Group, we believe in the power of storytelling to inspire, captivate, and drive change. With a passion for cinematic excellence, we bring stories to life that resonate with audiences worldwide.
+                                    </p>
+                                </div>
+
+                            </div>
                         </Modal>
 
                     </div>
@@ -239,10 +601,8 @@ const Section = () => {
 
             </section>
 
-
-
-            <section ref={sectionRef} className='relative h-screen overflow-hidden md:hidden'>
-                <motion.div className='absolute w-full h-[120%] -z-10' style={{ top: y }}>
+            <section /* ref={sectionRef} */ id='hala' className='relative h-screen overflow-hidden md:hidden'>
+                <motion.div className='absolute w-full h-[120%] -z-10' /* style={{ top: y }} */>
                     <div className='absolute inset-0 bg-black/30 z-10' />
                     <Image src={Bg2} alt="fdf" fill className="object-right object-cover  md:object-cover w-full " />
 
@@ -258,19 +618,19 @@ const Section = () => {
                 <div className='absolute flex bottom-0 right-0 gap-2 p-10'>
 
                     <div>
-                        <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700' onClick={() => setOpen(true)}>Learn More </button>
+                        <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium focus:outline-none  rounded-full border  focus:z-10 focus:ring-4  focus:ring-gray-700 bg-gray-800 text-gray-400 border-gray-600 hover:text-white hover:bg-gray-700' onClick={() => setOpen(true)}>Learn More </button>
 
                         <Modal open={open} onClose={() => setOpen(false)}>
-                                            <div className="text-center w-56">
-                                                <Info size={56} className="mx-auto text-green-500" />
-                                                <div className="mx-auto my-4 w-48">
-                                                    <h3 className="text-lg font-black text-gray-800">Learn More</h3>
-                                                    <p className="text-sm text-gray-500">
-                                                        At 1982 Group, we believe in the power of storytelling to inspire, captivate, and drive change. With a passion for cinematic excellence, we bring stories to life that resonate with audiences worldwide.
-                                                    </p>
-                                                </div>
-                                                
-                                            </div>
+                            <div className="text-center w-56">
+                                <Info size={56} className="mx-auto text-green-500" />
+                                <div className="mx-auto my-4 w-48">
+                                    <h3 className="text-lg font-black text-gray-800">Learn More</h3>
+                                    <p className="text-sm text-gray-500">
+                                        At 1982 Group, we believe in the power of storytelling to inspire, captivate, and drive change. With a passion for cinematic excellence, we bring stories to life that resonate with audiences worldwide.
+                                    </p>
+                                </div>
+
+                            </div>
                         </Modal>
 
                     </div>
@@ -282,6 +642,206 @@ const Section = () => {
                 </div>
 
             </section>
+
+            <section /* ref={sectionRef} */ id='82cinemas' className='relative h-screen overflow-hidden  ' >
+
+                <motion.div className='absolute w-full h-[120%] -z-10' /* style={{ top: y }} */ >
+                    <div className='absolute inset-0 bg-black/30 z-10' />
+                    <div className='block md:hidden'>
+
+                        <Image src={Bg3} alt="fdf" fill className="object-right object-cover  md:object-cover w-full " />
+
+                    </div>
+
+                    <div className='hidden md:block '>
+                        <Image src={Bg1} alt="fdf" fill className="object-right object-cover  md:object-cover w-full blur-md " />
+
+                    </div>
+
+                </motion.div>
+
+                <section className=' absolute inset-0 pt-5 px-5 hidden md:block '>
+
+                    <section className='main '>
+
+                        <section className= {activeCard === '82 Production' ? 'carddion activecarddion' : 'carddion'} /* id='82 Production' */>
+                            <Image src={Bg1} alt='ff' className=' imageee  ' />
+
+                            <div className="layer">
+                                <div className="info ">
+
+                                    <Image src={Bgs1} alt={'bg'} />
+                                </div>
+                                <div className='info-1'>
+
+                                    <div>
+                                        <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium focus:outline-none  rounded-full border  focus:z-10 focus:ring-4  focus:ring-gray-700 bg-gray-800 text-gray-400 border-gray-600 hover:text-white hover:bg-gray-700' onClick={() => setOpen(true)}>Learn More </button>
+
+                                        <Modal open={open} onClose={() => setOpen(false)}>
+                                            <div className="text-center w-56">
+                                                <Info size={56} className="mx-auto text-green-500" />
+                                                <div className="mx-auto my-4 w-48">
+                                                    <h3 className="text-lg font-black text-gray-800">Learn More</h3>
+                                                    <p className="text-sm text-gray-500">
+                                                        At 1982 Group, we believe in the power of storytelling to inspire, captivate, and drive change. With a passion for cinematic excellence, we bring stories to life that resonate with audiences worldwide.
+                                                    </p>
+                                                </div>
+
+                                            </div>
+                                        </Modal>
+
+                                    </div>
+
+                                    <div>
+                                        <Image src={Play} alt='ff' className=' w-10 ' />
+                                    </div>
+
+                                </div>
+
+
+
+                            </div>
+
+                        </section>
+
+                        <section className= {activeCard === 'HALA!' ? 'carddion activecarddion' : 'carddion'} /* id='HALA!' */>
+                            <Image src={Bg2} alt='ff' className='  imageee ' />
+
+                            <div className="layer">
+                                <div className="info">
+                                    <h1 className='text-white text-7xl p-5'>HALA!</h1>
+
+                                </div>
+                                <div className='absolute flex bottom-20 right-10 gap-2 opacity-0 info-1'>
+
+                                    <div>
+                                        <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium focus:outline-none  rounded-full border  focus:z-10 focus:ring-4  focus:ring-gray-700 bg-gray-800 text-gray-400 border-gray-600 hover:text-white hover:bg-gray-700' onClick={() => setOpen(true)}>Learn More </button>
+
+                                        <Modal open={open} onClose={() => setOpen(false)}>
+                                            <div className="text-center w-56">
+                                                <Info size={56} className="mx-auto text-green-500" />
+                                                <div className="mx-auto my-4 w-48">
+                                                    <h3 className="text-lg font-black text-gray-800">Learn More</h3>
+                                                    <p className="text-sm text-gray-500">
+                                                        At 1982 Group, we believe in the power of storytelling to inspire, captivate, and drive change. With a passion for cinematic excellence, we bring stories to life that resonate with audiences worldwide.
+                                                    </p>
+                                                </div>
+
+                                            </div>
+                                        </Modal>
+
+                                    </div>
+
+                                    <div>
+                                        <Image src={Play} alt='ff' className=' w-10 ' />
+                                    </div>
+
+                                </div>
+
+
+
+                            </div>
+                        </section>
+
+
+                        <section className= {activeCard === '82 cinemas' ? 'carddion activecarddion' : 'carddion'} /* id='82 cinemas' */>
+                            <Image src={Bg3} alt='ff' className='  imageee ' />
+
+                            <div className="layer">
+                                <div className="info">
+
+                                    <Image src={Bgs2} alt={'bg'} />
+                                </div>
+                                <div className='absolute flex bottom-20 right-10 gap-2 opacity-0 info-1'>
+
+                                    <div>
+                                        <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium focus:outline-none  rounded-full border  focus:z-10 focus:ring-4  focus:ring-gray-700 bg-gray-800 text-gray-400 border-gray-600 hover:text-white hover:bg-gray-700' onClick={() => setOpen(true)}>Learn More </button>
+
+                                        <Modal open={open} onClose={() => setOpen(false)}>
+                                            <div className="text-center w-56">
+                                                <Info size={56} className="mx-auto text-green-500" />
+                                                <div className="mx-auto my-4 w-48">
+                                                    <h3 className="text-lg font-black text-gray-800">Learn More</h3>
+                                                    <p className="text-sm text-gray-500">
+                                                        At 1982 Group, we believe in the power of storytelling to inspire, captivate, and drive change. With a passion for cinematic excellence, we bring stories to life that resonate with audiences worldwide.
+                                                    </p>
+                                                </div>
+
+                                            </div>
+                                        </Modal>
+
+                                    </div>
+
+                                    <div>
+                                        <Image src={Play} alt='ff' className=' w-10 ' />
+                                    </div>
+
+                                </div>
+
+
+
+                            </div>
+
+
+
+                        </section>
+
+                    </section>
+
+                </section>
+
+
+                <div className='absolute bottom-0 left-0 gap-4 p-10 md:hidden'>
+
+
+                    <Image src={Bgs2} alt='ff' className=' w-16 ' />
+
+
+                </div>
+
+
+
+                <div className='absolute flex bottom-0 right-0 gap-2 p-10 md:hidden'>
+
+                    <div>
+                        <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium focus:outline-none  rounded-full border  focus:z-10 focus:ring-4  focus:ring-gray-700 bg-gray-800 text-gray-400 border-gray-600 hover:text-white hover:bg-gray-700' onClick={() => setOpen(true)}>Learn More </button>
+
+                        <Modal open={open} onClose={() => setOpen(false)}>
+                            <div className="text-center w-56">
+                                <Info size={56} className="mx-auto text-green-500" />
+                                <div className="mx-auto my-4 w-48">
+                                    <h3 className="text-lg font-black text-gray-800">Learn More</h3>
+                                    <p className="text-sm text-gray-500">
+                                        At 1982 Group, we believe in the power of storytelling to inspire, captivate, and drive change. With a passion for cinematic excellence, we bring stories to life that resonate with audiences worldwide.
+                                    </p>
+                                </div>
+
+                            </div>
+                        </Modal>
+
+
+
+                    </div>
+
+                    <div>
+                        <Image src={Play} alt='ff' className=' w-10 ' />
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -359,7 +919,7 @@ const Section = () => {
                                 <div className='absolute flex bottom-20 right-10 gap-2 opacity-0 info-1'>
 
                                     <div>
-                                        <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700' onClick={() => setOpen(true)}>Learn More </button>
+                                        <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium focus:outline-none  rounded-full border  focus:z-10 focus:ring-4  focus:ring-gray-700 bg-gray-800 text-gray-400 border-gray-600 hover:text-white hover:bg-gray-700' onClick={() => setOpen(true)}>Learn More </button>
 
                                         <Modal open={open} onClose={() => setOpen(false)}>
                                             <div className="text-center w-56">
@@ -504,164 +1064,250 @@ const Section = () => {
 
 
 
-            {/* click effect */}
-            
-            
-            <section ref={sectionRef}  className='relative h-screen overflow-hidden  ' >
-                
-                    <motion.div className='absolute w-full h-[120%] -z-10' style={{ top: y }} >
-                        <div className='absolute inset-0 bg-black/30 z-10' />
-                        <div className='block md:hidden'>
-
-                            <Image src={Bg3} alt="fdf" fill className="object-right object-cover  md:object-cover w-full " />
-
-                        </div>
-
-                        <div className='hidden md:block '>
-                            <Image src={Bg1} alt="fdf" fill className="object-right object-cover  md:object-cover w-full blur-md " />
-
-                        </div>
-
-                    </motion.div>
-
-                    <div className=' absolute inset-0 pt-2 px-5 hidden md:block '>
-
-                        <div className='main '>
-
-                            <div className='carddion activecarddion '>
-                                <Image src={Bg1} alt='ff' className=' imageee  ' />
-                                
-                                <div className="layer">
-                                    <div className="info ">
-                                        
-                                        <Image src={Bgs1} alt={'bg'}/>
-                                    </div>
-                                        <div className='info-1'>
-
-                                            <div>
-                                                <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700' onClick={() => setOpen(true)}>Learn More </button>
-
-                                                <Modal open={open} onClose={() => setOpen(false)}>
-                                            <div className="text-center w-56">
-                                                <Info size={56} className="mx-auto text-green-500" />
-                                                <div className="mx-auto my-4 w-48">
-                                                    <h3 className="text-lg font-black text-gray-800">Learn More</h3>
-                                                    <p className="text-sm text-gray-500">
-                                                        At 1982 Group, we believe in the power of storytelling to inspire, captivate, and drive change. With a passion for cinematic excellence, we bring stories to life that resonate with audiences worldwide.
-                                                    </p>
-                                                </div>
-                                                
-                                            </div>
-                                        </Modal>
-
-                                            </div>
-
-                                            <div>
-                                                <Image src={Play} alt='ff' className=' w-10 ' />
-                                            </div>
-
-                                        </div>
+            {/* click effect & parallex effect*/}
 
 
-                                    
+            {/* <section ref={sectionRef} id='82production' className='relative h-screen overflow-hidden md:hidden'>
+                <motion.div className='absolute w-full h-[120%] -z-10' style={{ top: y }}>
+                    <div className='absolute inset-0 bg-black/30 z-10' />
+                    <Image src={Bg1} alt="fdf" fill className="object-right object-cover  md:object-cover w-full " />
+
+                </motion.div>
+                <div className='absolute bottom-0 left-0 gap-4 p-10'>
+                    <Image src={Bgs1} alt='ff' className=' w-28 ' />
+
+                </div>
+
+                <div className='absolute flex bottom-0 right-0 gap-2 p-10'>
+
+                    <div>
+                        <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700' onClick={() => setOpen(true)}>Learn More </button>
+
+                        <Modal open={open} onClose={() => setOpen(false)}>
+                            <div className="text-center w-56">
+                                <Info size={56} className="mx-auto text-green-500" />
+                                <div className="mx-auto my-4 w-48">
+                                    <h3 className="text-lg font-black text-gray-800">Learn More</h3>
+                                    <p className="text-sm text-gray-500">
+                                        At 1982 Group, we believe in the power of storytelling to inspire, captivate, and drive change. With a passion for cinematic excellence, we bring stories to life that resonate with audiences worldwide.
+                                    </p>
                                 </div>
 
                             </div>
-
-                            <div className='carddion'>
-                                <Image src={Bg2} alt='ff' className='  imageee ' />
-
-                                <div className="layer">
-                                    <div className="info">
-                                        <h1 className='text-white text-7xl p-5'>HALA!</h1>
-                                        
-                                    </div>
-                                        <div className='absolute flex bottom-20 right-10 gap-2 opacity-0 info-1'>
-
-                                            <div>
-                                                <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700' onClick={() => setOpen(true)}>Learn More </button>
-
-                                                <Modal open={open} onClose={() => setOpen(false)}>
-                                            <div className="text-center w-56">
-                                                <Info size={56} className="mx-auto text-green-500" />
-                                                <div className="mx-auto my-4 w-48">
-                                                    <h3 className="text-lg font-black text-gray-800">Learn More</h3>
-                                                    <p className="text-sm text-gray-500">
-                                                        At 1982 Group, we believe in the power of storytelling to inspire, captivate, and drive change. With a passion for cinematic excellence, we bring stories to life that resonate with audiences worldwide.
-                                                    </p>
-                                                </div>
-                                                
-                                            </div>
-                                        </Modal>
-
-                                            </div>
-
-                                            <div>
-                                                <Image src={Play} alt='ff' className=' w-10 ' />
-                                            </div>
-
-                                        </div>
-
-
-                                    
-                                </div>
-                            </div>
-
-
-                            <div className='carddion'>
-                                <Image src={Bg3} alt='ff' className='  imageee ' />
-
-                                <div className="layer">
-                                    <div className="info">
-                                        
-                                        <Image src={Bgs2} alt={'bg'}/>
-                                    </div>
-                                        <div className='absolute flex bottom-20 right-10 gap-2 opacity-0 info-1'>
-
-                                            <div>
-                                                <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700' onClick={() => setOpen(true)}>Learn More </button>
-
-                                                <Modal open={open} onClose={() => setOpen(false)}>
-                                            <div className="text-center w-56">
-                                                <Info size={56} className="mx-auto text-green-500" />
-                                                <div className="mx-auto my-4 w-48">
-                                                    <h3 className="text-lg font-black text-gray-800">Learn More</h3>
-                                                    <p className="text-sm text-gray-500">
-                                                        At 1982 Group, we believe in the power of storytelling to inspire, captivate, and drive change. With a passion for cinematic excellence, we bring stories to life that resonate with audiences worldwide.
-                                                    </p>
-                                                </div>
-                                                
-                                            </div>
-                                                </Modal>
-
-                                            </div>
-
-                                            <div>
-                                                <Image src={Play} alt='ff' className=' w-10 ' />
-                                            </div>
-
-                                        </div>
-
-
-                                    
-                                </div>
-
-
-
-                            </div>
-
-                        </div>
+                        </Modal>
 
                     </div>
 
-                
-                    <div className='absolute bottom-0 left-0 gap-4 p-10 md:hidden'>
+                    <div>
+                        <Image src={Play} alt='ff' className=' w-10 ' />
+                    </div>
+
+                </div>
 
 
-                        <Image src={Bgs2} alt='ff' className=' w-16 ' />
+            </section>
 
+
+
+            <section ref={sectionRef} id='hala' className='relative h-screen overflow-hidden md:hidden'>
+                <motion.div className='absolute w-full h-[120%] -z-10' style={{ top: y }}>
+                    <div className='absolute inset-0 bg-black/30 z-10' />
+                    <Image src={Bg2} alt="fdf" fill className="object-right object-cover  md:object-cover w-full " />
+
+                </motion.div>
+                <div className='absolute bottom-0 left-0 gap-4 p-10'>
+
+
+                    <h1 className='text-5xl' >HALA!</h1>
+
+
+                </div>
+
+                <div className='absolute flex bottom-0 right-0 gap-2 p-10'>
+
+                    <div>
+                        <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700' onClick={() => setOpen(true)}>Learn More </button>
+
+                        <Modal open={open} onClose={() => setOpen(false)}>
+                            <div className="text-center w-56">
+                                <Info size={56} className="mx-auto text-green-500" />
+                                <div className="mx-auto my-4 w-48">
+                                    <h3 className="text-lg font-black text-gray-800">Learn More</h3>
+                                    <p className="text-sm text-gray-500">
+                                        At 1982 Group, we believe in the power of storytelling to inspire, captivate, and drive change. With a passion for cinematic excellence, we bring stories to life that resonate with audiences worldwide.
+                                    </p>
+                                </div>
+
+                            </div>
+                        </Modal>
 
                     </div>
+
+                    <div>
+                        <Image src={Play} alt='ff' className=' w-10 ' />
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <section ref={sectionRef} id='82cinemas' className='relative h-screen overflow-hidden  ' >
+
+                <motion.div className='absolute w-full h-[120%] -z-10' style={{ top: y }} >
+                    <div className='absolute inset-0 bg-black/30 z-10' />
+                    <div className='block md:hidden'>
+
+                        <Image src={Bg3} alt="fdf" fill className="object-right object-cover  md:object-cover w-full " />
+
+                    </div>
+
+                    <div className='hidden md:block '>
+                        <Image src={Bg1} alt="fdf" fill className="object-right object-cover  md:object-cover w-full blur-md " />
+
+                    </div>
+
+                </motion.div>
+
+                <section className=' absolute inset-0 pt-2 px-5 hidden md:block '>
+
+                    <section className='main '>
+
+                        <section className='carddion activecarddion ' >
+                            <Image src={Bg1} alt='ff' className=' imageee  ' />
+
+                            <div className="layer">
+                                <div className="info ">
+
+                                    <Image src={Bgs1} alt={'bg'} />
+                                </div>
+                                <div className='info-1'>
+
+                                    <div>
+                                        <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700' onClick={() => setOpen(true)}>Learn More </button>
+
+                                        <Modal open={open} onClose={() => setOpen(false)}>
+                                            <div className="text-center w-56">
+                                                <Info size={56} className="mx-auto text-green-500" />
+                                                <div className="mx-auto my-4 w-48">
+                                                    <h3 className="text-lg font-black text-gray-800">Learn More</h3>
+                                                    <p className="text-sm text-gray-500">
+                                                        At 1982 Group, we believe in the power of storytelling to inspire, captivate, and drive change. With a passion for cinematic excellence, we bring stories to life that resonate with audiences worldwide.
+                                                    </p>
+                                                </div>
+
+                                            </div>
+                                        </Modal>
+
+                                    </div>
+
+                                    <div>
+                                        <Image src={Play} alt='ff' className=' w-10 ' />
+                                    </div>
+
+                                </div>
+
+
+
+                            </div>
+
+                        </section>
+
+                        <section className='carddion' >
+                            <Image src={Bg2} alt='ff' className='  imageee ' />
+
+                            <div className="layer">
+                                <div className="info">
+                                    <h1 className='text-white text-7xl p-5'>HALA!</h1>
+
+                                </div>
+                                <div className='absolute flex bottom-20 right-10 gap-2 opacity-0 info-1'>
+
+                                    <div>
+                                        <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700' onClick={() => setOpen(true)}>Learn More </button>
+
+                                        <Modal open={open} onClose={() => setOpen(false)}>
+                                            <div className="text-center w-56">
+                                                <Info size={56} className="mx-auto text-green-500" />
+                                                <div className="mx-auto my-4 w-48">
+                                                    <h3 className="text-lg font-black text-gray-800">Learn More</h3>
+                                                    <p className="text-sm text-gray-500">
+                                                        At 1982 Group, we believe in the power of storytelling to inspire, captivate, and drive change. With a passion for cinematic excellence, we bring stories to life that resonate with audiences worldwide.
+                                                    </p>
+                                                </div>
+
+                                            </div>
+                                        </Modal>
+
+                                    </div>
+
+                                    <div>
+                                        <Image src={Play} alt='ff' className=' w-10 ' />
+                                    </div>
+
+                                </div>
+
+
+
+                            </div>
+                        </section>
+
+
+                        <section className='carddion' >
+                            <Image src={Bg3} alt='ff' className='  imageee ' />
+
+                            <div className="layer">
+                                <div className="info">
+
+                                    <Image src={Bgs2} alt={'bg'} />
+                                </div>
+                                <div className='absolute flex bottom-20 right-10 gap-2 opacity-0 info-1'>
+
+                                    <div>
+                                        <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700' onClick={() => setOpen(true)}>Learn More </button>
+
+                                        <Modal open={open} onClose={() => setOpen(false)}>
+                                            <div className="text-center w-56">
+                                                <Info size={56} className="mx-auto text-green-500" />
+                                                <div className="mx-auto my-4 w-48">
+                                                    <h3 className="text-lg font-black text-gray-800">Learn More</h3>
+                                                    <p className="text-sm text-gray-500">
+                                                        At 1982 Group, we believe in the power of storytelling to inspire, captivate, and drive change. With a passion for cinematic excellence, we bring stories to life that resonate with audiences worldwide.
+                                                    </p>
+                                                </div>
+
+                                            </div>
+                                        </Modal>
+
+                                    </div>
+
+                                    <div>
+                                        <Image src={Play} alt='ff' className=' w-10 ' />
+                                    </div>
+
+                                </div>
+
+
+
+                            </div>
+
+
+
+                        </section>
+
+                    </section>
+
+                </section>
+
+
+                <div className='absolute bottom-0 left-0 gap-4 p-10 md:hidden'>
+
+
+                    <Image src={Bgs2} alt='ff' className=' w-16 ' />
+
+
+                </div>
 
 
 
@@ -671,17 +1317,17 @@ const Section = () => {
                         <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700' onClick={() => setOpen(true)}>Learn More </button>
 
                         <Modal open={open} onClose={() => setOpen(false)}>
-                                            <div className="text-center w-56">
-                                                <Info size={56} className="mx-auto text-green-500" />
-                                                <div className="mx-auto my-4 w-48">
-                                                    <h3 className="text-lg font-black text-gray-800">Learn More</h3>
-                                                    <p className="text-sm text-gray-500">
-                                                        At 1982 Group, we believe in the power of storytelling to inspire, captivate, and drive change. With a passion for cinematic excellence, we bring stories to life that resonate with audiences worldwide.
-                                                    </p>
-                                                </div>
-                                                
-                                            </div>
-                                                </Modal>
+                            <div className="text-center w-56">
+                                <Info size={56} className="mx-auto text-green-500" />
+                                <div className="mx-auto my-4 w-48">
+                                    <h3 className="text-lg font-black text-gray-800">Learn More</h3>
+                                    <p className="text-sm text-gray-500">
+                                        At 1982 Group, we believe in the power of storytelling to inspire, captivate, and drive change. With a passion for cinematic excellence, we bring stories to life that resonate with audiences worldwide.
+                                    </p>
+                                </div>
+
+                            </div>
+                        </Modal>
 
 
 
@@ -693,7 +1339,7 @@ const Section = () => {
 
                 </div>
 
-            </section>
+            </section> */} 
 
 
 

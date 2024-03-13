@@ -12,7 +12,9 @@ type ActiveSectionContextType = {
     setActiveSection: React.Dispatch<React.SetStateAction<SectionName>>;
     timeOfLastClick: number;
     setTimeOfLastClick: React.Dispatch<React.SetStateAction<number>>;
+    /* smoothScroll: string;  */   
 };
+
 
 export const ActiveSectionContext =
     createContext<ActiveSectionContextType | null>(null);
@@ -20,8 +22,19 @@ export const ActiveSectionContext =
 export default function ActiveSectionContextProvider({
     children,
 }: ActiveSectionContextProviderProps) {
-    const [activeSection, setActiveSection] = useState<SectionName>("HALA!");
-    const [timeOfLastClick, setTimeOfLastClick] = useState(0); // we need to keep track of this to disable the observer temporarily when user clicks on a link
+    const [activeSection, setActiveSection] = useState<SectionName>("82 Production");
+    const [timeOfLastClick, setTimeOfLastClick] = useState(0);
+    
+    /* const smoothScroll = (hash: string) => {
+        const element = document.getElementById(hash.slice(1));
+        if (element) {
+            element.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+            });
+        }
+    }; */
+    // we need to keep track of this to disable the observer temporarily when user clicks on a link
 
     return (
         <ActiveSectionContext.Provider
@@ -30,6 +43,7 @@ export default function ActiveSectionContextProvider({
                 setActiveSection,
                 timeOfLastClick,
                 setTimeOfLastClick,
+                /* smoothScroll, */
             }}
         >
             {children}

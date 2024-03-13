@@ -5,6 +5,7 @@
 @layer base {
   html {
     @apply text-white;
+    @apply scroll-smooth; 
   }
 }
 
@@ -106,7 +107,7 @@ body::before {
 
 .main{
   width: full;
-  height: 730px;
+  height: 710px;
   display: flex;
   gap: 15px;
   /* align-items: center; */

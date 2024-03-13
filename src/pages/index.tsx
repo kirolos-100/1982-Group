@@ -13,31 +13,39 @@ import Bgs1 from "@/../public/image-PhotoRoom-1.png";
 import Bgs2 from "@/../public/image-PhotoRoom-2.png";
 import Bgs3 from "@/../public/3.png";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Lenis from "@studio-freight/lenis";
+import Navbar from "@/components/Navbar";
 
 
 
 export default function Home() {
-  useEffect(() => {
+  
+
+  const [activeCard, setActiveCard] = useState<string | null>(null);
+
+
+  /* useEffect(() => {
     const lenis = new Lenis();
     function raf(time: any){
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
-  } , []);
+  } , []); */
+
 
 
 
   return (
     <main className="min-h-screen">
       
+    <Navbar setActiveCard={setActiveCard}/>
     <HeroSection/>
 
 
 
-    <Section/>
+    <Section activeCard={activeCard}/>
 
 
     {/* with Paraellex */} 
@@ -77,6 +85,7 @@ export default function Home() {
 
 
       {/* <p className="text-black">Landing page with parallax smooth scroll.</p> */}
+    
     </main>
   );
 }

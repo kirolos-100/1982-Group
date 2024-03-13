@@ -9,7 +9,7 @@ import loogo from "../../public/logoo - Copy.png";
 const HeroSection = () => {
     return (
         <section className="relative h-screen flex flex-col justify-center">
-            <Navbar/>
+            
             <div className="absolute inset-0 -z-10">
                 <div className="absolute inset-0 bg-black/30 z-10"/>
                     <video className="w-full h-full object-cover" autoPlay muted loop>
@@ -22,6 +22,9 @@ const HeroSection = () => {
                     <motion.div className="flex flex-col items-center gap-60 "
                     initial={{ y: -100, x: "0%", opacity: 0 }}
                     animate={{ y: 0, x: "0%", opacity: 1 }}
+                    /* initial={{  x: "0%", opacity: 0 }}
+                    animate={{  x: "0%", opacity: 1 }}
+                    transition={{duration: 6, delay: 1, repeat:Infinity, repeatType:"reverse"}} */
                     >
                         
                         <div className="">
@@ -41,10 +44,12 @@ const HeroSection = () => {
 
                     </motion.div>
 
-                    <div className=" absolute bottom-2   md:bottom-0 right-0 p-10 ">
+                    <motion.div className=" absolute bottom-2   md:bottom-0 right-0 p-10 " initial={{  x: "0%", opacity: 0 }}
+                    animate={{  x: "0%", opacity: 1 }}
+                    transition={{duration: 6, delay: 1, repeat:Infinity, repeatType:"reverse"}}>
                         <Image src={loogo} alt="image" className="w-24 md:w-32  "/>
 
-                    </div>
+                    </motion.div>
 
 
                     {/* <motion.div className="flex flex-col items-center gap-8 "

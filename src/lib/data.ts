@@ -8,7 +8,23 @@ export const links = [
     },
     {
         name: "HALA!",
-        hash: "#about",
+        hash: "#hala",
+    },
+    {
+        name: "82 cinemas",
+        hash: "#82cinemas",
+    },
+    
+] as const;
+
+export const linkss = [
+    {
+        name: "82 Production",
+        hash: "#82cinemas",
+    },
+    {
+        name: "HALA!",
+        hash: "#82cinemas",
     },
     {
         name: "82 cinemas",

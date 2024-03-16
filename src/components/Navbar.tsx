@@ -91,9 +91,10 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveCard }) => {
 
 
             <motion.div
-                className="fixed top-0 left-1/2 h-[4.5rem] w-full rounded-none border border-opacity-20 bg-opacity-60 shadow-lg z-20 shadow-black/[0.03] backdrop-blur-[0.5rem] sm:top-6 sm:h-[3.25rem] sm:w-[36rem] sm:rounded-full bg-gray-950 border-black/40 dark:bg-opacity-50 "
+                className="fixed top-0 left-1/2 h-[4.5rem] w-full rounded-none border border-opacity-20 bg-opacity-60 shadow-lg z-20 shadow-black/[0.03] backdrop-blur-[0.5rem] sm:top-6 sm:h-[3.5rem] sm:w-[40rem] sm:rounded-full bg-gray-950 border-black/40 dark:bg-opacity-50 "
                 initial={{ y: -100, x: "-50%", opacity: 0 }}
                 animate={{ y: 0, x: "-50%", opacity: 1 }}
+                
             >
                 <div className='hidden md:flex flex-row  justify-between items-center px-8 py-2'>
                     <Link href="#">
@@ -107,8 +108,6 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveCard }) => {
 
             <nav className="flex fixed z-20 top-[0.15rem] left-1/2 h-12 -translate-x-1/2 py-2 sm:top-[1.7rem] sm:h-[initial] sm:py-0 md:hidden">
 
-
-
                 <ul className="flex w-[22rem] flex-wrap items-center justify-center gap-y-1 text-[0.9rem] font-medium text-gray-500 sm:w-[initial] sm:flex-nowrap sm:gap-5">
                     {links.map((link) => (
                         <motion.li
@@ -119,7 +118,7 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveCard }) => {
                         >
                             <Link
                                 className={clsx(
-                                    "flex w-full items-center justify-center px-3 py-3  transition text-gray-500 hover:text-gray-300",
+                                    "flex w-full items-center justify-center px-3 py-3  transition text-gray-300 hover:text-gray-100",
                                     {
                                         "text-gray-200":
                                             activeSection === link.name,
@@ -139,7 +138,7 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveCard }) => {
 
                                 {link.name === activeSection && (
                                     <motion.span
-                                        className=" rounded-full absolute inset-0 -z-10 bg-gray-800"
+                                        className=" rounded-full absolute -bottom-1 left-1/2 -z-10 bg-gray-300 h-2 w-2"
                                         layoutId="activeSection"
                                         transition={{
                                             type: "spring",
@@ -159,7 +158,6 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveCard }) => {
             <nav className="hidden md:flex fixed z-20 top-[0.15rem] left-1/2 h-12 -translate-x-1/2 py-2 sm:top-[1.7rem] sm:h-[initial] sm:py-0 ">
 
 
-
                 <ul className="flex w-[22rem] flex-wrap items-center justify-center gap-y-1 text-[0.9rem] font-medium text-gray-500 sm:w-[initial] sm:flex-nowrap sm:gap-5">
                     {linkss.map((link) => (
                         <motion.li
@@ -170,7 +168,7 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveCard }) => {
                         >
                             <Link
                                 className={clsx(
-                                    "flex w-full items-center justify-center px-3 py-3  transition text-gray-500 hover:text-gray-300",
+                                    "flex w-full items-center justify-center px-3 py-3  transition text-gray-300 hover:text-gray-100",
                                     {
                                         " text-gray-200":
                                             activeSection === link.name,
@@ -191,7 +189,7 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveCard }) => {
 
                                 {link.name === activeSection && (
                                     <motion.span
-                                        className=" rounded-full absolute inset-0 -z-10 bg-gray-800"
+                                        className=" rounded-full absolute -bottom-1 left-1/2 -z-10 bg-gray-300 h-2 w-2"
                                         layoutId="activeSection"
                                         transition={{
                                             type: "spring",

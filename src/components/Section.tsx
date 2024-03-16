@@ -564,7 +564,7 @@ const Section: React.FC<SectionProps> = ({ activeCard }) => {
             <section /* ref={sectionRef} */ id='82production' className='relative h-screen overflow-hidden md:hidden'>
                 <motion.div className='absolute w-full h-[120%] -z-10' /* style={{ top: y }} */>
                     <div className='absolute inset-0 bg-black/30 z-10' />
-                    <Image src={Bg1} alt="fdf" fill className="object-right object-cover  md:object-cover w-full " />
+                    <Image src={Bg2} alt="fdf" fill className="object-right object-cover  md:object-cover w-full " />
 
                 </motion.div>
                 <div className='absolute bottom-0 left-0 gap-4 p-10'>
@@ -574,27 +574,19 @@ const Section: React.FC<SectionProps> = ({ activeCard }) => {
 
                 <div className='absolute flex bottom-0 right-0 gap-2 p-10'>
 
-                    <div>
+                    {/* <div>
                         <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium focus:outline-none  rounded-full border  focus:z-10 focus:ring-4  focus:ring-gray-700 bg-gray-800 text-gray-400 border-gray-600 hover:text-white hover:bg-gray-700' onClick={() => setOpen(true)}>Learn More </button>
 
-                        <Modal open={open} onClose={() => setOpen(false)}>
-                            <div className="text-center w-56">
-                                <Info size={56} className="mx-auto text-green-500" />
-                                <div className="mx-auto my-4 w-48">
-                                    <h3 className="text-lg font-black text-gray-800">Learn More</h3>
-                                    <p className="text-sm text-gray-500">
-                                        At 1982 Group, we believe in the power of storytelling to inspire, captivate, and drive change. With a passion for cinematic excellence, we bring stories to life that resonate with audiences worldwide.
-                                    </p>
-                                </div>
-
-                            </div>
+                        <Modal open={open} onClose={() => setOpen(false)} ImgUrl={Bg2} header='82 Production' paragraph='The oldest cinema makers in Saudi Arabia. For 40 years, we have been leading this industry.
+                        Join now.'>
+                            <></>
                         </Modal>
 
                     </div>
 
                     <div>
                         <Image src={Play} alt='ff' className=' w-10 ' />
-                    </div>
+                    </div> */}
 
                 </div>
 
@@ -604,7 +596,7 @@ const Section: React.FC<SectionProps> = ({ activeCard }) => {
             <section /* ref={sectionRef} */ id='hala' className='relative h-screen overflow-hidden md:hidden'>
                 <motion.div className='absolute w-full h-[120%] -z-10' /* style={{ top: y }} */>
                     <div className='absolute inset-0 bg-black/30 z-10' />
-                    <Image src={Bg2} alt="fdf" fill className="object-right object-cover  md:object-cover w-full " />
+                    <Image src={Bg1} alt="fdf" fill className="object-right object-cover  md:object-cover w-full " />
 
                 </motion.div>
                 <div className='absolute bottom-0 left-0 gap-4 p-10'>
@@ -615,22 +607,16 @@ const Section: React.FC<SectionProps> = ({ activeCard }) => {
 
                 </div>
 
-                <div className='absolute flex bottom-0 right-0 gap-2 p-10'>
+                {/* <div className='absolute flex bottom-0 right-0 gap-2 p-10'>
 
                     <div>
                         <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium focus:outline-none  rounded-full border  focus:z-10 focus:ring-4  focus:ring-gray-700 bg-gray-800 text-gray-400 border-gray-600 hover:text-white hover:bg-gray-700' onClick={() => setOpen(true)}>Learn More </button>
 
-                        <Modal open={open} onClose={() => setOpen(false)}>
-                            <div className="text-center w-56">
-                                <Info size={56} className="mx-auto text-green-500" />
-                                <div className="mx-auto my-4 w-48">
-                                    <h3 className="text-lg font-black text-gray-800">Learn More</h3>
-                                    <p className="text-sm text-gray-500">
-                                        At 1982 Group, we believe in the power of storytelling to inspire, captivate, and drive change. With a passion for cinematic excellence, we bring stories to life that resonate with audiences worldwide.
-                                    </p>
-                                </div>
-
-                            </div>
+                        <Modal open={open} onClose={() => setOpen(false)} ImgUrl={Bg1} header='HALA!' paragraph='The oldest cinema makers in Saudi Arabia. For 40 years, we have been leading this industry.
+                        Join now.'>
+                            <>
+                            </>
+                            
                         </Modal>
 
                     </div>
@@ -639,7 +625,7 @@ const Section: React.FC<SectionProps> = ({ activeCard }) => {
                         <Image src={Play} alt='ff' className=' w-10 ' />
                     </div>
 
-                </div>
+                </div> */}
 
             </section>
 
@@ -665,7 +651,7 @@ const Section: React.FC<SectionProps> = ({ activeCard }) => {
                     <section className='main '>
 
                         <section className= {activeCard === '82 Production' ? 'carddion activecarddion' : 'carddion'} /* id='82 Production' */>
-                            <Image src={Bg1} alt='ff' className=' imageee  ' />
+                            <Image src={Bg2} alt='ff' className=' imageee  ' />
 
                             <div className="layer">
                                 <div className="info ">
@@ -677,8 +663,12 @@ const Section: React.FC<SectionProps> = ({ activeCard }) => {
                                     <div>
                                         <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium focus:outline-none  rounded-full border  focus:z-10 focus:ring-4  focus:ring-gray-700 bg-gray-800 text-gray-400 border-gray-600 hover:text-white hover:bg-gray-700' onClick={() => setOpen(true)}>Learn More </button>
 
-                                        <Modal open={open} onClose={() => setOpen(false)}>
-                                            <div className="text-center w-56">
+                                        <Modal open={open} onClose={() => setOpen(false)} ImgUrl={Bg2} header='82 Production' paragraph='The oldest cinema makers in Saudi Arabia. For 40 years, we have been leading this industry.
+                                        Join now.'>
+                                            <>
+                                            
+                                            </>
+                                            {/* <div className="text-center w-56">
                                                 <Info size={56} className="mx-auto text-green-500" />
                                                 <div className="mx-auto my-4 w-48">
                                                     <h3 className="text-lg font-black text-gray-800">Learn More</h3>
@@ -687,7 +677,7 @@ const Section: React.FC<SectionProps> = ({ activeCard }) => {
                                                     </p>
                                                 </div>
 
-                                            </div>
+                                            </div> */}
                                         </Modal>
 
                                     </div>
@@ -705,7 +695,7 @@ const Section: React.FC<SectionProps> = ({ activeCard }) => {
                         </section>
 
                         <section className= {activeCard === 'HALA!' ? 'carddion activecarddion' : 'carddion'} /* id='HALA!' */>
-                            <Image src={Bg2} alt='ff' className='  imageee ' />
+                            <Image src={Bg1} alt='ff' className='  imageee ' />
 
                             <div className="layer">
                                 <div className="info">
@@ -717,8 +707,11 @@ const Section: React.FC<SectionProps> = ({ activeCard }) => {
                                     <div>
                                         <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium focus:outline-none  rounded-full border  focus:z-10 focus:ring-4  focus:ring-gray-700 bg-gray-800 text-gray-400 border-gray-600 hover:text-white hover:bg-gray-700' onClick={() => setOpen(true)}>Learn More </button>
 
-                                        <Modal open={open} onClose={() => setOpen(false)}>
-                                            <div className="text-center w-56">
+                                        <Modal open={open} onClose={() => setOpen(false)} ImgUrl={Bg1} header='HALA!' paragraph='The oldest cinema makers in Saudi Arabia. For 40 years, we have been leading this industry.
+                                        Join now.'>
+                                            <>
+                                            </>
+                                            {/* <div className="text-center w-56">
                                                 <Info size={56} className="mx-auto text-green-500" />
                                                 <div className="mx-auto my-4 w-48">
                                                     <h3 className="text-lg font-black text-gray-800">Learn More</h3>
@@ -727,7 +720,7 @@ const Section: React.FC<SectionProps> = ({ activeCard }) => {
                                                     </p>
                                                 </div>
 
-                                            </div>
+                                            </div> */}
                                         </Modal>
 
                                     </div>
@@ -757,8 +750,11 @@ const Section: React.FC<SectionProps> = ({ activeCard }) => {
                                     <div>
                                         <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium focus:outline-none  rounded-full border  focus:z-10 focus:ring-4  focus:ring-gray-700 bg-gray-800 text-gray-400 border-gray-600 hover:text-white hover:bg-gray-700' onClick={() => setOpen(true)}>Learn More </button>
 
-                                        <Modal open={open} onClose={() => setOpen(false)}>
-                                            <div className="text-center w-56">
+                                        <Modal open={open} onClose={() => setOpen(false)} ImgUrl={Bg3} header='82 Cinemas' paragraph='The oldest cinema makers in Saudi Arabia. For 40 years, we have been leading this industry.
+                                        Join now.'>
+                                            <>
+                                            </>
+                                            {/* <div className="text-center w-56">
                                                 <Info size={56} className="mx-auto text-green-500" />
                                                 <div className="mx-auto my-4 w-48">
                                                     <h3 className="text-lg font-black text-gray-800">Learn More</h3>
@@ -767,7 +763,7 @@ const Section: React.FC<SectionProps> = ({ activeCard }) => {
                                                     </p>
                                                 </div>
 
-                                            </div>
+                                            </div> */}
                                         </Modal>
 
                                     </div>
@@ -801,33 +797,24 @@ const Section: React.FC<SectionProps> = ({ activeCard }) => {
 
 
 
-                <div className='absolute flex bottom-0 right-0 gap-2 p-10 md:hidden'>
+                {/* <div className='absolute flex bottom-0 right-0 gap-2 p-10 md:hidden'>
 
                     <div>
                         <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium focus:outline-none  rounded-full border  focus:z-10 focus:ring-4  focus:ring-gray-700 bg-gray-800 text-gray-400 border-gray-600 hover:text-white hover:bg-gray-700' onClick={() => setOpen(true)}>Learn More </button>
-
-                        <Modal open={open} onClose={() => setOpen(false)}>
-                            <div className="text-center w-56">
-                                <Info size={56} className="mx-auto text-green-500" />
-                                <div className="mx-auto my-4 w-48">
-                                    <h3 className="text-lg font-black text-gray-800">Learn More</h3>
-                                    <p className="text-sm text-gray-500">
-                                        At 1982 Group, we believe in the power of storytelling to inspire, captivate, and drive change. With a passion for cinematic excellence, we bring stories to life that resonate with audiences worldwide.
-                                    </p>
-                                </div>
-
-                            </div>
+                        <Modal open={open} onClose={() => setOpen(false)} ImgUrl={Bg3} header='82 Cinemas' paragraph='The oldest cinema makers in Saudi Arabia. For 40 years, we have been leading this industry.
+                        Join now.'>
+                            <>
+                            </>
                         </Modal>
 
-
-
+                        
                     </div>
 
                     <div>
                         <Image src={Play} alt='ff' className=' w-10 ' />
                     </div>
 
-                </div>
+                </div> */}
 
             </section>
 

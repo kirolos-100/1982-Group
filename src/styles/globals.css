@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
 
 @layer base {
   html {
@@ -8,6 +9,10 @@
     @apply scroll-smooth; 
   }
 }
+
+
+
+
 
 
 /* 
@@ -31,8 +36,9 @@ body::before {
 
 
 * {
-    transition: 0.8s;
+    transition: 0.4s;
 }
+
 
 
 
@@ -190,4 +196,23 @@ body::before {
 .info p {
   color: rgba(255, 255, 255, 0.75);
   margin-top: 5px;
+}
+
+
+/* CSS */
+.modal-open {
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+.card-transition {
+  transition: 1.3s;
+}
+
+.concert-one-regular {
+  font-family: "Concert One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }

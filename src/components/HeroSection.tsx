@@ -5,7 +5,7 @@ import MK1982 from "../../public/1982-copy-2-1-1.png"
 import { motion } from "framer-motion";
 import loogo from "../../public/logoo - Copy.png";
 
-
+    
 const HeroSection = () => {
     return (
         <section className="relative h-screen flex flex-col justify-center">

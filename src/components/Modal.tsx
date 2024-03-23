@@ -22,7 +22,7 @@ interface ModalProps {
     */
 }
 
-
+    
 
 
 const Modal: React.FC<ModalProps> = ({ open, onClose, ImgUrl, children , header , paragraph/*  ,   */ }) => {

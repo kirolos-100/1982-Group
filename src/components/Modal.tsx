@@ -52,26 +52,26 @@ const Modal: React.FC<ModalProps> = ({ open, onClose, ImgUrl, children , header 
 
             /* onClick={onClose} */
             className={` 
-        fixed inset-0 flex  z-20   
+        fixed inset-0 flex  z-40   
         ${open ? "visible bg-black/20" : "invisible"}
         `}
 
         >
             {/* modal */}
             {/* I think transition all removed better */}
-            <div className="z-30" onClick={onClose}>
+            {/* <div className="z-40" onClick={onClose}>
 
                 <Navbar setActiveCard={setActiveCard}/>
-            </div>
+            </div> */}
             <div
                 onClick={(e) => e.stopPropagation()}
                 className={`card-transition
-                w-full h-screen inset-0 z-20 
+                w-full h-screen inset-0 z-40 
           ${open ? "scale-100 opacity-100" : "scale-125 opacity-0"}
         `}
 
             >
-                <div className='absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70 z-20' onClick={onClose} />
+                <div className='absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70 z-40' onClick={onClose} />
                 <div className=' '>
 
                     <Image src={ImgUrl} alt="fdf" fill className="object-right object-cover  md:object-cover w-full " />
@@ -147,7 +147,7 @@ export default Modal;
 {/* <div className=" absolute top-4 -right-7 gap-4 p-24 ">
                 <button
                         onClick={onClose}
-                        className="absolute  rounded-lg text-gray-100  z-30 hover: hover:text-gray-600"
+                        className="absolute  rounded-lg text-gray-100  z-40 hover: hover:text-gray-600"
                         title="close"
                 >
                     <X />

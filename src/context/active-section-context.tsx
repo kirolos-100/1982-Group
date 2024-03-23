@@ -22,7 +22,7 @@ export const ActiveSectionContext =
 export default function ActiveSectionContextProvider({
     children,
 }: ActiveSectionContextProviderProps) {
-    const [activeSection, setActiveSection] = useState<SectionName>("82 Production");
+    const [activeSection, setActiveSection] = useState<SectionName>("HALA!");
     const [timeOfLastClick, setTimeOfLastClick] = useState(0);
     
     /* const smoothScroll = (hash: string) => {

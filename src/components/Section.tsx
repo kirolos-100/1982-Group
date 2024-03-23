@@ -2,7 +2,8 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Image, { StaticImageData } from 'next/image';
 import React, { useEffect, useRef, useState } from 'react'
-
+import MK1982 from "../../public/1982-copy-2-1-1.png"
+import B1982 from "../../public/Black-1982-Group.png"
 import BgOverview from "@/../public/bg-overview.jpeg";
 import BgInterior from "@/../public/bg-interior.jpeg";
 import BgCharging from "@/../public/bg-charging.jpeg";
@@ -23,13 +24,8 @@ import { Info, Trash } from 'react-feather';
 
 
 
-
-
-
-
 /* second try expend soultion  */
 /* const images = ["/1.png" , "/2.png" , "/3.png"]; */
-
 
 
 
@@ -46,10 +42,11 @@ import { Info, Trash } from 'react-feather';
 
 interface SectionProps {
     activeCard: string | null; // Assuming activeCard is of type number or null
+    
 }
 
 
-const Section: React.FC<SectionProps> = ({ activeCard }) => {
+const Section: React.FC<SectionProps> = ({ activeCard  }) => {
 
     /* const sectionRef = useRef(null);
     const { scrollYProgress } = useScroll({
@@ -60,6 +57,20 @@ const Section: React.FC<SectionProps> = ({ activeCard }) => {
     const y = useTransform(scrollYProgress, [0, 1], ["-20%", "10%"]); */
 
 
+    const { activeSection, setActiveSection } = useActiveSectionContext();
+
+
+    const handleCardClick = (sectionName: string) => {
+        switch (sectionName) {
+            case '82 Production':
+            case 'HALA!':
+            case '82 cinemas':
+                setActiveSection(sectionName);
+                break;
+            default:
+                console.error('Invalid section name:', sectionName);
+        }
+    };
 
 
     const images = ["/1.png", "/2.png", "/3.png"];
@@ -567,6 +578,16 @@ const Section: React.FC<SectionProps> = ({ activeCard }) => {
                     <Image src={Bg2} alt="fdf" fill className="object-right object-cover  md:object-cover w-full " />
 
                 </motion.div>
+
+                    <div className="flex flex-col items-center justify-center p-24 gap-60 "
+                    
+                    >
+                        
+                        <div className="">
+                        <Image src={B1982} alt="image" className=" w-40 "/>
+                        </div>
+                    </div>
+
                 <div className='absolute bottom-0 left-0 gap-4 p-10'>
                     <Image src={Bgs1} alt='ff' className=' w-28 ' />
 
@@ -599,6 +620,16 @@ const Section: React.FC<SectionProps> = ({ activeCard }) => {
                     <Image src={Bg1} alt="fdf" fill className="object-right object-cover  md:object-cover w-full " />
 
                 </motion.div>
+                <div className="flex flex-col items-center justify-center p-24 gap-60 "
+                    
+                    >
+                        
+                        <div className="">
+                        <Image src={B1982} alt="image" className=" w-40 "/>
+                        </div>
+                    </div>
+
+
                 <div className='absolute bottom-0 left-0 gap-4 p-10'>
 
 
@@ -650,7 +681,7 @@ const Section: React.FC<SectionProps> = ({ activeCard }) => {
 
                     <section className='main '>
 
-                        <section className= {activeCard === '82 Production' ? 'carddion activecarddion' : 'carddion'} /* id='82 Production' */>
+                        <section className= {activeCard === '82 Production' ? 'carddion activecarddion' : 'carddion'} onClick={()=>{handleCardClick("82 Production")}} >
                             <Image src={Bg2} alt='ff' className=' imageee  ' />
 
                             <div className="layer">
@@ -658,7 +689,7 @@ const Section: React.FC<SectionProps> = ({ activeCard }) => {
 
                                     <Image src={Bgs1} alt={'bg'} />
                                 </div>
-                                <div className='info-1'>
+                                <div className='info-1 '>
 
                                     <div>
                                         <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium focus:outline-none  rounded-full border  focus:z-10 focus:ring-4  focus:ring-gray-700 bg-gray-800 text-gray-400 border-gray-600 hover:text-white hover:bg-gray-700' onClick={() => setOpen(true)}>Learn More </button>
@@ -688,13 +719,17 @@ const Section: React.FC<SectionProps> = ({ activeCard }) => {
 
                                 </div>
 
+                                <div className='ImageClick absolute inset-x-5 bottom-40'>
+                                    <Image src={Bgs1} alt={'bg'} />
+                                </div>
+
 
 
                             </div>
 
                         </section>
 
-                        <section className= {activeCard === 'HALA!' ? 'carddion activecarddion' : 'carddion'} /* id='HALA!' */>
+                        <section className= {activeCard === 'HALA!' ? 'carddion activecarddion' : 'carddion'} onClick={()=>{handleCardClick("HALA!")}} >
                             <Image src={Bg1} alt='ff' className='  imageee ' />
 
                             <div className="layer">
@@ -702,7 +737,7 @@ const Section: React.FC<SectionProps> = ({ activeCard }) => {
                                     <h1 className='text-white text-7xl p-5'>HALA!</h1>
 
                                 </div>
-                                <div className='absolute flex bottom-20 right-10 gap-2 opacity-0 info-1'>
+                                <div className='absolute flex bottom-20 right-10 gap-2 opacity-0 info-1 '>
 
                                     <div>
                                         <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium focus:outline-none  rounded-full border  focus:z-10 focus:ring-4  focus:ring-gray-700 bg-gray-800 text-gray-400 border-gray-600 hover:text-white hover:bg-gray-700' onClick={() => setOpen(true)}>Learn More </button>
@@ -731,13 +766,17 @@ const Section: React.FC<SectionProps> = ({ activeCard }) => {
 
                                 </div>
 
+                                <div className='ImageClick absolute inset-x-5 bottom-40'>
+                                    <h1 className='text-7xl -rotate-90'>HALA!</h1>
+                                </div>
+
 
 
                             </div>
                         </section>
 
 
-                        <section className= {activeCard === '82 cinemas' ? 'carddion activecarddion' : 'carddion'} /* id='82 cinemas' */>
+                        <section className= {activeCard === '82 cinemas' ? 'carddion activecarddion' : 'carddion'} onClick={()=>{handleCardClick("82 cinemas")}}/* id='82 cinemas' */>
                             <Image src={Bg3} alt='ff' className='  imageee ' />
 
                             <div className="layer">
@@ -745,7 +784,7 @@ const Section: React.FC<SectionProps> = ({ activeCard }) => {
 
                                     <Image src={Bgs2} alt={'bg'} />
                                 </div>
-                                <div className='absolute flex bottom-20 right-10 gap-2 opacity-0 info-1'>
+                                <div className=' info-1 '>
 
                                     <div>
                                         <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium focus:outline-none  rounded-full border  focus:z-10 focus:ring-4  focus:ring-gray-700 bg-gray-800 text-gray-400 border-gray-600 hover:text-white hover:bg-gray-700' onClick={() => setOpen(true)}>Learn More </button>
@@ -774,6 +813,10 @@ const Section: React.FC<SectionProps> = ({ activeCard }) => {
 
                                 </div>
 
+                                <div className='ImageClick absolute w-3/4 inset-x-5 lg:inset-12  bottom-40 md:w-1/2 '>
+                                    <Image src={Bgs2} alt={'bg'} />
+                                </div>
+
 
 
                             </div>
@@ -786,6 +829,14 @@ const Section: React.FC<SectionProps> = ({ activeCard }) => {
 
                 </section>
 
+                <div className="flex flex-col items-center justify-center p-24 gap-60 md:hidden "
+                    
+                    >
+                        
+                        <div className="">
+                        <Image src={B1982} alt="image" className=" w-40 "/>
+                        </div>
+                    </div>
 
                 <div className='absolute bottom-0 left-0 gap-4 p-10 md:hidden'>
 

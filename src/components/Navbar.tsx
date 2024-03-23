@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from 'react'
+import React, { useEffect, CSSProperties } from 'react'
 import Logo from '@/../public/logo.svg'
 /* import Logoo from '@/../public/Logoo.svg';
 import Loogo from '@/../public/Loogo.svg'; */
@@ -28,6 +28,19 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveCard }) => {
 
     const { activeSection, setActiveSection, setTimeOfLastClick } =
         useActiveSectionContext();
+
+    // Define media query styles for tablets and desktops
+    /* const tabletStyles: CSSProperties = {
+        left: activeSection === '82 Production' ? 'calc(50% - 150px)' : activeSection === '82 cinemas' ? 'calc(50% + 150px)' : '50%',
+    };
+
+    const desktopStyles: CSSProperties = {
+        left: activeSection === '82 Production' ? 'calc(50% - 150px)' : activeSection === '82 cinemas' ? 'calc(50% + 150px)' : '50%',
+    };
+
+    const mobileStyles: CSSProperties = {
+        left: '50%'
+    } */
 
 
     /* not working smoothScroll */
@@ -84,17 +97,32 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveCard }) => {
         }
     }; */
 
+
+
+    const handleLinkClick = (linkName: string) => {
+        if (linkName === '82 Production' || linkName === 'HALA!' || linkName === '82 cinemas') {
+            setActiveSection(linkName);
+            setTimeOfLastClick(Date.now());
+            setActiveCard(linkName);
+        } else {
+            console.error('Invalid link name:', linkName);
+        }
+    };
+
+
     return (
 
 
         <>
 
-
+{<div className='md:hidden'>
             <motion.div
-                className="fixed top-0 left-1/2 h-[4.5rem] w-full rounded-none border border-opacity-20 bg-opacity-60 shadow-lg z-20 shadow-black/[0.03] backdrop-blur-[0.5rem] sm:top-6 sm:h-[3.5rem] sm:w-[40rem] sm:rounded-full bg-gray-950 border-black/40 dark:bg-opacity-50 "
+                className="fixed block top-0 left-1/2 h-[4.5rem] w-full rounded-none border border-opacity-20 bg-opacity-60 shadow-lg z-10 shadow-black/[0.03] backdrop-blur-[0.5rem] sm:top-6 sm:h-[3.5rem] sm:w-[40rem] sm:rounded-full bg-gray-950 border-black/40 dark:bg-opacity-50 "
+                
+
                 initial={{ y: -100, x: "-50%", opacity: 0 }}
                 animate={{ y: 0, x: "-50%", opacity: 1 }}
-                
+
             >
                 <div className='hidden md:flex flex-row  justify-between items-center px-8 py-2'>
                     <Link href="#">
@@ -106,7 +134,7 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveCard }) => {
 
             </motion.div>
 
-            <nav className="flex fixed z-20 top-[0.15rem] left-1/2 h-12 -translate-x-1/2 py-2 sm:top-[1.7rem] sm:h-[initial] sm:py-0 md:hidden">
+            <nav className="flex fixed z-10 top-[0.15rem] left-1/2 h-12 -translate-x-1/2 py-2 sm:top-[1.7rem] sm:h-[initial] sm:py-0 md:hidden">
 
                 <ul className="flex w-[22rem] flex-wrap items-center justify-center gap-y-1 text-[0.9rem] font-medium text-gray-500 sm:w-[initial] sm:flex-nowrap sm:gap-5">
                     {links.map((link) => (
@@ -129,8 +157,7 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveCard }) => {
                                     setActiveSection(link.name);
                                     setTimeOfLastClick(Date.now());
                                     setActiveCard(link.name);
-                                    /* handleLinkClick(link.name) */
-                                    /* smoothScroll(link.hash); */
+                                    
 
                                 }}
                             >
@@ -152,10 +179,34 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveCard }) => {
                     ))}
                 </ul>
             </nav>
+            </div>}
+
+            <motion.div
+                className="hidden fixed top-0 left-1/2 h-[4.5rem] w-full rounded-none border border-opacity-20 bg-opacity-60 shadow-lg z-10 shadow-black/[0.03] backdrop-blur-[0.5rem] sm:block sm:top-6 sm:h-[3.5rem] sm:w-[40rem] sm:rounded-full bg-gray-950 border-black/40 dark:bg-opacity-50 "
+                style={{ left: activeSection === '82 Production' ? 'calc(50% - 140px)' : activeSection === '82 cinemas' ? 'calc(50% + 140px)' : '50%' }}
+
+                /* style={{
+                    ...mobileStyles,  
+                    ...tabletStyles, 
+                    ...desktopStyles, 
+                }} */
 
 
+                initial={{ y: -100, x: "-50%", opacity: 0 }}
+                animate={{ y: 0, x: "-50%", opacity: 1 }}
 
-            <nav className="hidden md:flex fixed z-20 top-[0.15rem] left-1/2 h-12 -translate-x-1/2 py-2 sm:top-[1.7rem] sm:h-[initial] sm:py-0 ">
+            >
+                <div className='hidden md:flex flex-row  justify-between items-center px-8 py-2'>
+                    <Link href="#">
+                        <Image src={MK1982} alt={''} className='md:opacity-40 w-12' />
+                    </Link>
+
+                    <Image src={loogo} alt={''} className='md:opacity-40 w-12' />
+                </div>
+
+            </motion.div>
+
+            <nav className="hidden md:flex fixed z-10 top-[0.15rem] left-1/2 h-12 -translate-x-1/2 py-2 sm:top-[1.7rem] sm:h-[initial] sm:py-0 " style={{ left: activeSection === '82 Production' ? 'calc(50% - 140px)' : activeSection === '82 cinemas' ? 'calc(50% + 140px)' : '50%' }}>
 
 
                 <ul className="flex w-[22rem] flex-wrap items-center justify-center gap-y-1 text-[0.9rem] font-medium text-gray-500 sm:w-[initial] sm:flex-nowrap sm:gap-5">
@@ -179,6 +230,7 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveCard }) => {
                                     setActiveSection(link.name);
                                     setTimeOfLastClick(Date.now());
                                     setActiveCard(link.name);
+                                    handleLinkClick(link.name)
                                     /* handleLinkClick(link.name)
                                     getNavbarOffset(link.name) */
                                     /* smoothScroll(link.hash); */
@@ -203,6 +255,13 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveCard }) => {
                     ))}
                 </ul>
             </nav>
+
+            
+            
+
+
+
+            
 
         </>
     )

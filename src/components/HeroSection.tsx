@@ -5,7 +5,7 @@ import MK1982 from "../../public/1982-copy-2-1-1.png"
 import { motion } from "framer-motion";
 import loogo from "../../public/logoo - Copy.png";
 
-    
+
 const HeroSection = () => {
     return (
         <section className="relative h-screen flex flex-col justify-center">
@@ -16,32 +16,19 @@ const HeroSection = () => {
                         <source src="/shutterstock_1103961009.mov"  />
                     </video>
                 </div>
-                {/* Text content */}
+                
 
                 <div className="flex flex-col items-center gap-24">
                     <motion.div className="flex flex-col items-center gap-60 "
                     initial={{ y: -100, x: "0%", opacity: 0 }}
                     animate={{ y: 0, x: "0%", opacity: 1 }}
-                    /* initial={{  x: "0%", opacity: 0 }}
-                    animate={{  x: "0%", opacity: 1 }}
-                    transition={{duration: 6, delay: 1, repeat:Infinity, repeatType:"reverse"}} */
+                    
                     >
                         
                         <div className="">
-                        <Image src={MK1982} alt="image" className=" w-80  "/>
+                        <Image src={MK1982} alt="image" className=" w-60 md:w-80   "/>
 
                         </div>
-
-                        
-                        
-                        
-                        {/* <h1 className="text-6xl max-w-[15ch] text-center font-serif">
-                            Experience the draw 
-                        </h1>
-
-                            <p>lorsdfalksdjflajsdflkj sadf</p>
-                            <button className="bg-white text-black uppercase px-6 py-2 rounded-md">Stay informed</button> */}
-
                     </motion.div>
 
                     <motion.div className=" absolute bottom-2   md:bottom-0 right-0 p-10 " initial={{  x: "0%", opacity: 0 }}
@@ -50,43 +37,7 @@ const HeroSection = () => {
                         <Image src={loogo} alt="image" className="w-24 md:w-32  "/>
 
                     </motion.div>
-
-
-                    {/* <motion.div className="flex flex-col items-center gap-8 "
-                    initial={{ y: -100, x: "0%", opacity: 0 }}
-                    animate={{ y: 0, x: "0%", opacity: 1 }}
-                    >
-                        
-                        
-                        <Image src={MK1982} alt="image" className=" w-20  "/>
-                        
-                        
-                        
-                    </motion.div> */}
-
-
-
-
-                    {/* <div className="flex justify-between w-3/5 max-w-[900px]">
-
-                        <HighlightItem title="Projected Range" content="Over 440 mi"/>
-                            <div className="h-full w-[2px] bg-white" />
-                        <HighlightItem title="Projected Range" content="Over 440 mi"/>
-                            <div className="h-full w-[2px] bg-white" />
-
-                        <HighlightItem title="Projected Range" content="Over 440 mi"/>
-                            <div className="h-full w-[2px] bg-white" />
-
-                        <HighlightItem title="Projected Range" content="Over 440 mi"/>
-                            <div className="h-full w-[2px] bg-white" />
-                        
-
-
-
-
-                    </div> */}
-
-
+                    
                 
 
             </div>

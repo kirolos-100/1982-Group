@@ -117,24 +117,24 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveCard }) => {
 
 {<div className='md:hidden'>
             <motion.div
-                className="fixed block top-0 left-1/2 h-[4.5rem] w-full rounded-none border border-opacity-20 bg-opacity-60 shadow-lg z-10 shadow-black/[0.03] backdrop-blur-[0.5rem] sm:top-6 sm:h-[3.5rem] sm:w-[40rem] sm:rounded-full bg-gray-950 border-black/40 dark:bg-opacity-50 "
+                className="fixed block rounded-full left-1/2 border border-opacity-20 bg-opacity-60 shadow-lg z-10 shadow-black/[0.03] backdrop-blur-[0.5rem] top-6 h-[3.5rem] w-[25rem]  bg-gray-950 border-black/40 dark:bg-opacity-50 "
                 
 
                 initial={{ y: -100, x: "-50%", opacity: 0 }}
                 animate={{ y: 0, x: "-50%", opacity: 1 }}
 
             >
-                <div className='hidden md:flex flex-row  justify-between items-center px-8 py-2'>
+                <div className='hidden  justify-between items-center px-8 py-2'>
                     <Link href="#">
-                        <Image src={MK1982} alt={''} className='md:opacity-40 w-12' />
+                        <Image src={MK1982} alt={''} className='opacity-40 w-10' />
                     </Link>
 
-                    <Image src={loogo} alt={''} className='md:opacity-40 w-12' />
+                    <Image src={loogo} alt={''} className='opacity-40 w-10' />
                 </div>
 
             </motion.div>
 
-            <nav className="flex fixed z-10 top-[0.15rem] left-1/2 h-12 -translate-x-1/2 py-2 sm:top-[1.7rem] sm:h-[initial] sm:py-0 md:hidden">
+            <nav className="flex fixed z-10  left-1/2  -translate-x-1/2  top-[1.7rem] h-[initial] py-0 md:hidden">
 
                 <ul className="flex w-[22rem] flex-wrap items-center justify-center gap-y-1 text-[0.9rem] font-medium text-gray-500 sm:w-[initial] sm:flex-nowrap sm:gap-5">
                     {links.map((link) => (
@@ -179,6 +179,7 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveCard }) => {
                     ))}
                 </ul>
             </nav>
+
             </div>}
 
             <motion.div

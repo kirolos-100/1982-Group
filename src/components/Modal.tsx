@@ -17,15 +17,16 @@ interface ModalProps {
     children: React.ReactNode;
     header: string;
     paragraph: string;
+    className: string;
 
     /* 
     */
 }
 
-    
 
 
-const Modal: React.FC<ModalProps> = ({ open, onClose, ImgUrl, children , header , paragraph/*  ,   */ }) => {
+
+const Modal: React.FC<ModalProps> = ({ open, onClose, ImgUrl, children , header , paragraph , className/*  ,   */ }) => {
 
 
     useEffect(() => {
@@ -66,7 +67,7 @@ const Modal: React.FC<ModalProps> = ({ open, onClose, ImgUrl, children , header 
             <div
                 onClick={(e) => e.stopPropagation()}
                 className={`card-transition
-                w-full h-screen inset-0 z-40 
+                w-full h-screen inset-0 z-40 transition-colors 
           ${open ? "scale-100 opacity-100" : "scale-125 opacity-0"}
         `}
 
@@ -93,8 +94,7 @@ const Modal: React.FC<ModalProps> = ({ open, onClose, ImgUrl, children , header 
                     </div>
                     <div className="w-11/12">
                         <motion.p className="text-white text-lg md:text-xl">
-                            The oldest cinema makers in Saudi Arabia. For 40 years, we have been leading this industry.
-                            Join now.
+                            
                             {paragraph}
                         </motion.p>
                     </div>

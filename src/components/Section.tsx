@@ -20,6 +20,8 @@ import { useSectionInView } from "@/lib/hooks";
 import { useActiveSectionContext } from '@/context/active-section-context';
 import Modal from './Modal';
 import { Info, Trash } from 'react-feather';
+import Modal1 from './Modal1';
+import Modal2 from './Modal2';
 
 
 
@@ -78,6 +80,8 @@ const Section: React.FC<SectionProps> = ({ activeCard  }) => {
 
     /* modal state */
     const [open, setOpen] = useState(false);
+    const [open1, setOpen1] = useState(false);
+    const [open2, setOpen2] = useState(false);
 
 
     
@@ -592,7 +596,24 @@ const Section: React.FC<SectionProps> = ({ activeCard  }) => {
                     <Image src={Bgs1} alt='ff' className=' w-28 ' />
 
                 </div>
+                <div className='absolute flex bottom-0 right-0 gap-2 p-10'>
+                <div >
+                    <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium focus:outline-none  rounded-full border  focus:z-10 focus:ring-4  focus:ring-gray-700 bg-gray-800 text-gray-400 border-gray-600 hover:text-white hover:bg-gray-700' onClick={() => setOpen2(true)}>Learn More </button>
 
+                    <div >
+                    <Modal2 className='' open2={open2} onClose={() => setOpen2(false)} ImgUrl1={Bg2} header1='82 Production' paragraph1='Capturing Tomorrow&apos;s Stories, Today. At Eighty-Two Production, we are more than a media house; we are storytellers at the forefront of creativity. Where every frame captures the essence of innovation.'>
+
+                                            <>
+                                            </>
+                                            
+                                        </Modal2>
+                    </div>
+
+                </div>
+                <div>
+                        <Image src={Play} alt='ff' className=' w-10 ' />
+                    </div>
+                </div>
                 {/* <div className='absolute flex bottom-0 right-0 gap-2 p-10'>
 
                     <div>
@@ -641,24 +662,27 @@ const Section: React.FC<SectionProps> = ({ activeCard  }) => {
 
                 </div>
 
-                {/* <div className='absolute flex bottom-0 right-0 gap-2 p-10'>
+                <div className='absolute flex bottom-0 right-0 gap-2 p-10'>
 
-                    <div>
-                        <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium focus:outline-none  rounded-full border  focus:z-10 focus:ring-4  focus:ring-gray-700 bg-gray-800 text-gray-400 border-gray-600 hover:text-white hover:bg-gray-700' onClick={() => setOpen(true)}>Learn More </button>
+                <div >
+                    <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium focus:outline-none  rounded-full border  focus:z-10 focus:ring-4  focus:ring-gray-700 bg-gray-800 text-gray-400 border-gray-600 hover:text-white hover:bg-gray-700' onClick={() => setOpen1(true)}>Learn More </button>
 
-                        <Modal className='z-20' open={open} onClose={() => setOpen(false)} ImgUrl={Bg1} header='HALA!' paragraph='Your Next Obsession Awaits. Dive into HALA!, the ultimate streaming haven where exclusive originals meet handpicked classics in a celebration of cinematic brilliance. Welcome to your new streaming sanctuary.'>
-                            <>
-                            </>
-                            
-                        </Modal>
+                    <div >
+                    <Modal1 className='' open1={open1} onClose={() => setOpen1(false)} ImgUrl1={Bg1} header1='HALA!' paragraph1='Your Next Obsession Awaits. Dive into HALA!, the ultimate streaming haven where exclusive originals meet handpicked classics in a celebration of cinematic brilliance. Welcome to your new streaming sanctuary.'>
 
+                                            <>
+                                            </>
+                                            
+                                        </Modal1>
                     </div>
+
+                </div>
 
                     <div>
                         <Image src={Play} alt='ff' className=' w-10 ' />
                     </div>
 
-                </div> */}
+                </div>
 
             </section>
 
@@ -792,16 +816,7 @@ const Section: React.FC<SectionProps> = ({ activeCard  }) => {
                                         <Modal className='' open={open} onClose={() => setOpen(false)} ImgUrl={Bg3} header='82 Cinemas' paragraph='Experience Cinema Like Never Before. ’82 Cinemas isn&apos;t just about watching movies; it&apos;s about embarking on sensory journeys. Immerse yourself in the magic of the movies, where every screening is an event.'>
                                             <>
                                             </>
-                                            {/* <div className="text-center w-56">
-                                                <Info size={56} className="mx-auto text-green-500" />
-                                                <div className="mx-auto my-4 w-48">
-                                                    <h3 className="text-lg font-black text-gray-800">Learn More</h3>
-                                                    <p className="text-sm text-gray-500">
-                                                        At 1982 Group, we believe in the power of storytelling to inspire, captivate, and drive change. With a passion for cinematic excellence, we bring stories to life that resonate with audiences worldwide.
-                                                    </p>
-                                                </div>
-
-                                            </div> */}
+                                            
                                         </Modal>
 
                                     </div>
@@ -847,23 +862,26 @@ const Section: React.FC<SectionProps> = ({ activeCard  }) => {
 
 
 
-                {/* <div className='absolute flex bottom-0 right-0 gap-2 p-10 md:hidden'>
+                <div className='absolute flex bottom-0 right-0 gap-2 p-10 md:hidden'>
 
-                    <div>
+                <div>
                         <button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium focus:outline-none  rounded-full border  focus:z-10 focus:ring-4  focus:ring-gray-700 bg-gray-800 text-gray-400 border-gray-600 hover:text-white hover:bg-gray-700' onClick={() => setOpen(true)}>Learn More </button>
-                        <Modal className='z-10' open={open} onClose={() => setOpen(false)} ImgUrl={Bg3} header='82 Cinemas' paragraph='Experience Cinema Like Never Before. ’82 Cinemas isn&apos;t just about watching movies; it&apos;s about embarking on sensory journeys. Immerse yourself in the magic of the movies, where every screening is an event.'>
-                            <>
-                            </>
-                        </Modal>
+<div className='z-50'>
 
-                        
-                    </div>
+                                        <Modal className='' open={open} onClose={() => setOpen(false)} ImgUrl={Bg3} header='82 Cinemas' paragraph='Experience Cinema Like Never Before. ’82 Cinemas isn&apos;t just about watching movies; it&apos;s about embarking on sensory journeys. Immerse yourself in the magic of the movies, where every screening is an event.'>
+                                            <>
+                                            </>
+                                            
+                                        </Modal>
+</div>
+
+                                    </div>
 
                     <div>
                         <Image src={Play} alt='ff' className=' w-10 ' />
                     </div>
 
-                </div> */}
+                </div>
 
             </section>
 

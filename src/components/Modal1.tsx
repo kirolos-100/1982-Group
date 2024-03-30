@@ -11,12 +11,12 @@ import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 
 interface ModalProps {
-    open: boolean;
+    open1: boolean;
     onClose: () => void;
-    ImgUrl: StaticImageData;
+    ImgUrl1: StaticImageData;
     children: React.ReactNode;
-    header: string;
-    paragraph: string;
+    header1: string;
+    paragraph1: string;
     className: string;
 
     /* 
@@ -26,39 +26,22 @@ interface ModalProps {
 
 
 
-const Modal: React.FC<ModalProps> = ({ open, onClose, ImgUrl, children , header , paragraph , className/*  ,   */ }) => {
+const Modal1: React.FC<ModalProps> = ({ open1, onClose, ImgUrl1, children , header1 , paragraph1 , className/*  ,   */ }) => {
 
-    const [modalHeader, setModalHeader] = useState<string>(''); // State to manage the header
-    const [modalImg, setModalImg] = useState<string>(''); // State to manage the header
-    const [modalParagraph, setModalParagraph] = useState<string>(''); // State to manage the header
-
-
-    // Update modalHeader when props change
-    useEffect(() => {
-        setModalHeader(header);
-    }, [header]);
-    // Update modalHeader when props change
-    useEffect(() => {
-        setModalImg(header);
-    }, [header]);
-    // Update modalHeader when props change
-    useEffect(() => {
-        setModalParagraph(header);
-    }, [header]);
 
     useEffect(() => {
         
-        if (open) {
-            document.body.classList.add("modal-open");
+        if (open1) {
+            document.body.classList.add("modal-open1");
         } else {
-            document.body.classList.remove("modal-open");
+            document.body.classList.remove("modal-open1");
         }
 
         return () => {
             
-            document.body.classList.remove("modal-open");
+            document.body.classList.remove("modal-open1");
         };
-    }, [open]);
+    }, [open1]);
 
     const [activeCard, setActiveCard] = useState<string | null>(null);
 
@@ -70,8 +53,8 @@ const Modal: React.FC<ModalProps> = ({ open, onClose, ImgUrl, children , header 
 
             
             className={` 
-        fixed inset-0 flex  z-40   
-        ${open ? "visible bg-black/20" : "invisible"}
+        fixed inset-0 flex z-40   
+        ${open1 ? "visible bg-black/20" : "invisible"}
         `}
 
         >
@@ -80,14 +63,14 @@ const Modal: React.FC<ModalProps> = ({ open, onClose, ImgUrl, children , header 
                 onClick={(e) => e.stopPropagation()}
                 className={`card-transition
                 w-full h-screen inset-0 z-40 transition-colors 
-          ${open ? "scale-100 opacity-100" : "scale-125 opacity-0"}
+          ${open1 ? "scale-100 opacity-100" : "scale-125 opacity-0"}
         `}
 
             >
                 <div className='absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70 z-40' onClick={onClose} />
                 <div className=' '>
 
-                    <Image src={ImgUrl} alt="fdf" fill className="object-right object-cover  md:object-cover w-full " />
+                    <Image src={ImgUrl1} alt="fdf" fill className="object-right object-cover  md:object-cover w-full " />
 
 
 
@@ -101,24 +84,27 @@ const Modal: React.FC<ModalProps> = ({ open, onClose, ImgUrl, children , header 
                     onClick={onClose}
                 >
                     <div className="flex flex-row items-center justify-start gap-8 mb-20 ">
-                        <motion.h1 className="text-6xl concert-one-regular md:text-8xl"> {header} </motion.h1>
+                        <motion.h1 className="text-6xl concert-one-regular md:text-8xl"> {header1} </motion.h1>
                         <Image src={Play} alt="Play Icon"  className="w-10 md:w-16" />
                     </div>
                     <div className="w-11/12">
                         <motion.p className="text-white text-lg md:text-xl">
                             
-                            {paragraph}
+                            {paragraph1}
                         </motion.p>
                     </div>
                 </motion.div>
-
-                {/* {children} */}
+                
+                
+                
+                
+                {children}
 
             </div>
         </div>
     )
 }
-export default Modal;
+export default Modal1;
 
 
 

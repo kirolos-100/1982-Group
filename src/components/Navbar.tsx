@@ -29,78 +29,12 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveCard }) => {
     const { activeSection, setActiveSection, setTimeOfLastClick } =
         useActiveSectionContext();
 
-    // Define media query styles for tablets and desktops
-    /* const tabletStyles: CSSProperties = {
-        left: activeSection === '82 Production' ? 'calc(50% - 150px)' : activeSection === '82 cinemas' ? 'calc(50% + 150px)' : '50%',
-    };
-
-    const desktopStyles: CSSProperties = {
-        left: activeSection === '82 Production' ? 'calc(50% - 150px)' : activeSection === '82 cinemas' ? 'calc(50% + 150px)' : '50%',
-    };
-
-    const mobileStyles: CSSProperties = {
-        left: '50%'
-    } */
-
-
-    /* not working smoothScroll */
-    /* const smoothScroll = (hash: HashType) => {
-        const element = document.getElementById(hash.slice(1));
-        if (element) {
-            element.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start',
-            });
-        }
-    }; */
-
-    /* const links = [
-        {
-            name: "Home",
-            hash: "#home",
-        },
-        {
-            name: "About",
-            hash: "#about",
-        },
-        {
-            name: "Projects",
-            hash: "#projects",
-        },
-        {
-            name: "Skills",
-            hash: "#skills",
-        },
-        {
-            name: "Experience",
-            hash: "#experience",
-        },
-        {
-            name: "Contact",
-            hash: "#contact",
-        },
-    ]; */
-
-    /* const handleLinkClick = (linkName: "82 Production" | "HALA!" | "82 cinemas") => {
-        setActiveSection(linkName);
-        setTimeOfLastClick(Date.now());
-        setActiveCard(linkName);
-    };
-
-    const getNavbarOffset = (linkName: string) => {
-        if (linkName === '82 Production') {
-            return '-40px'; // Move to left
-        } else if (linkName === 'HALA!') {
-            return '-50%'; // Centered
-        } else {
-            return 'calc(100% - 40px)'; // Move to right
-        }
-    }; */
+    
 
 
 
     const handleLinkClick = (linkName: string) => {
-        if (linkName === '82 Production' || linkName === 'HALA!' || linkName === '82 cinemas') {
+        if (linkName === 'Eighty-Two Productions' || linkName === 'HALA!' || linkName === '82Cinemas') {
             setActiveSection(linkName);
             setTimeOfLastClick(Date.now());
             setActiveCard(linkName);
@@ -117,7 +51,7 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveCard }) => {
 
 {<div className='md:hidden'>
             <motion.div
-                className="fixed block rounded-full left-1/2 border border-opacity-20 bg-opacity-60 shadow-lg z-10 shadow-black/[0.03] backdrop-blur-[0.5rem] top-6 h-[3.5rem] w-[25rem]  bg-gray-950 border-black/40 dark:bg-opacity-50 "
+                className="fixed block rounded-full left-1/2 border border-opacity-20 bg-opacity-60 shadow-lg z-10 shadow-black/[0.03] backdrop-blur-[0.5rem] top-6 h-[3.5rem] w-[25rem] items-center  bg-gray-950 border-black/40 dark:bg-opacity-50 "
                 
 
                 initial={{ y: -100, x: "-50%", opacity: 0 }}
@@ -183,8 +117,8 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveCard }) => {
             </div>}
 
             <motion.div
-                className="hidden fixed top-0 left-1/2 h-[4.5rem] w-full rounded-none border border-opacity-20 bg-opacity-60 shadow-lg z-10 shadow-black/[0.03] backdrop-blur-[0.5rem] sm:block sm:top-6 sm:h-[3.5rem] sm:w-[40rem] sm:rounded-full bg-gray-950 border-black/40 dark:bg-opacity-50 "
-                style={{ left: activeSection === '82 Production' ? 'calc(50% - 140px)' : activeSection === '82 cinemas' ? 'calc(50% + 140px)' : '50%' }}
+                className="hidden fixed top-0 left-1/2 h-[4.5rem] w-full rounded-none border border-opacity-20 bg-opacity-60 shadow-lg z-10 shadow-black/[0.03] backdrop-blur-[0.5rem] sm:block sm:top-6 sm:h-[4.5rem] sm:w-[55rem] sm:rounded-full sm:items-center bg-gray-950 border-black/40 dark:bg-opacity-50  "
+                style={{ left: activeSection === 'Eighty-Two Productions' ? 'calc(50% - 140px)' : activeSection === '82Cinemas' ? 'calc(50% + 140px)' : '50%' }}
 
                 /* style={{
                     ...mobileStyles,  
@@ -199,18 +133,18 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveCard }) => {
             >
                 <div className='hidden md:flex flex-row  justify-between items-center px-8 py-2'>
                     <Link href="#">
-                        <Image src={MK1982} alt={''} className='md:opacity-40 w-12' />
+                        <Image src={MK1982} alt={''} className='md:opacity-40 w-16' />
                     </Link>
 
-                    <Image src={loogo} alt={''} className='md:opacity-40 w-12' />
+                    <Image src={loogo} alt={''} className='md:opacity-40 w-16' />
                 </div>
 
             </motion.div>
 
-            <nav className="hidden md:flex fixed z-10 top-[0.15rem] left-1/2 h-12 -translate-x-1/2 py-2 sm:top-[1.7rem] sm:h-[initial] sm:py-0 " style={{ left: activeSection === '82 Production' ? 'calc(50% - 140px)' : activeSection === '82 cinemas' ? 'calc(50% + 140px)' : '50%' }}>
+            <nav className="hidden md:flex fixed just z-10 top-[0.15rem] left-1/2 h-12 -translate-x-1/2 py-2 sm:top-[1.7rem] sm:h-[initial] sm:py-0 " style={{ left: activeSection === 'Eighty-Two Productions' ? 'calc(50% - 140px)' : activeSection === '82Cinemas' ? 'calc(50% + 140px)' : '50%' }}>
 
 
-                <ul className="flex w-[22rem] flex-wrap items-center justify-center gap-y-1 text-[0.9rem] font-medium text-gray-500 sm:w-[initial] sm:flex-nowrap sm:gap-5">
+                <ul className="flex w-[22rem] flex-wrap items-center justify-center gap-y-1 text-[1.2rem] font-medium text-gray-500 sm:w-[initial] sm:flex-nowrap sm:gap-10">
                     {linkss.map((link) => (
                         <motion.li
                             className="h-3/4 flex items-center justify-center relative"

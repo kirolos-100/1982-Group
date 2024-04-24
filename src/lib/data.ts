@@ -3,15 +3,15 @@ import React from "react";
 
 export const links = [
     {
-        name: "82 Production",
-        hash: "#82production",
+        name: "Eighty-Two Productions",
+        hash: "#eighty-two productions",
     },
     {
         name: "HALA!",
         hash: "#hala",
     },
     {
-        name: "82 cinemas",
+        name: "82Cinemas",
         hash: "#82cinemas",
     },
     
@@ -19,15 +19,15 @@ export const links = [
 
 export const linkss = [
     {
-        name: "82 Production",
-        hash: "#82cinemas",
+        name: "Eighty-Two Productions",
+        hash: "#Eighty-Two Productions",
     },
     {
         name: "HALA!",
         hash: "#82cinemas",
     },
     {
-        name: "82 cinemas",
+        name: "82Cinemas",
         hash: "#82cinemas",
     },
     

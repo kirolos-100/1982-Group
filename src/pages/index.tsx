@@ -25,15 +25,6 @@ export default function Home() {
   const [activeCard, setActiveCard] = useState<string | null>(null);
 
 
-  /* useEffect(() => {
-    const lenis = new Lenis();
-    function raf(time: any){
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-  } , []); */
-
 
 
 
@@ -48,43 +39,6 @@ export default function Home() {
     <Section activeCard={activeCard} />
 
 
-    {/* with Paraellex */} 
-
-    {/* <Section image={Bg2}
-    image1={Bgs1}
-    tag="overview"
-    title="elfsjdfl jslkdjf sdfjsldkj fsdkjf sdlkfjsdf"
-    description="jlsdfjlsd fklsjd flksjdfkl sdjflksdj fklsdjfl ksdjflksdjflksdjf lsdkj flsdkjf sldkfjsdlk jfsdlk jfsdlkf "/>
-    
-
-    <Section image={Bg1}
-    image1={Bgs1}
-    tag="overview"
-    title="elfsjdfl jslkdjf sdfjsldkj fsdkjf sdlkfjsdf"
-    description="jlsdfjlsd fklsjd flksjdfkl sdjflksdj fklsdjfl ksdjflksdjflksdjf lsdkj flsdkjf sldkfjsdlk jfsdlk jfsdlkf "/>
-
-
-<Section image={Bg3}
-    image1={Bgs2}
-    tag="overview"
-    title="elfsjdfl jslkdjf sdfjsldkj fsdkjf sdlkfjsdf"
-    description="jlsdfjlsd fklsjd flksjdfkl sdjflksdj fklsdjfl ksdjflksdjflksdjf lsdkj flsdkjf sldkfjsdlk jfsdlk jfsdlkf "/> */}
-
-
-{/* <Section image={BgInterior}
-    tag="overview"
-    title="elfsjdfl jslkdjf sdfjsldkj fsdkjf sdlkfjsdf"
-    description="jlsdfjlsd fklsjd flksjdfkl sdjflksdj fklsdjfl ksdjflksdjflksdjf lsdkj flsdkjf sldkfjsdlk jfsdlk jfsdlkf "/>
-
-<Section image={BgSafety}
-    tag="overview"
-    title="elfsjdfl jslkdjf sdfjsldkj fsdkjf sdlkfjsdf"
-    description="jlsdfjlsd fklsjd flksjdfkl sdjflksdj fklsdjfl ksdjflksdjflksdjf lsdkj flsdkjf sldkfjsdlk jfsdlk jfsdlkf "/> */}
-
-
-
-
-      {/* <p className="text-black">Landing page with parallax smooth scroll.</p> */}
     
     </main>
   );

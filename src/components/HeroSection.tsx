@@ -31,12 +31,12 @@ const HeroSection = () => {
                         </div>
                     </motion.div>
 
-                    <motion.div className=" absolute bottom-2   md:bottom-0 right-0 p-10 " initial={{  x: "0%", opacity: 0 }}
+                    <div className=" absolute bottom-2   md:bottom-0 right-0 p-10 " /* initial={{  x: "0%", opacity: 0 }}
                     animate={{  x: "0%", opacity: 1 }}
-                    transition={{duration: 6, delay: 1, repeat:Infinity, repeatType:"reverse"}}>
-                        <Image src={loogo} alt="image" className="w-24 md:w-32  "/>
+                    transition={{duration: 6, delay: 1, repeat:Infinity, repeatType:"reverse"}} */>
+                        <Image src={loogo} alt="image" className="w-24 md:w-28 opacity-70  "/>
 
-                    </motion.div>
+                    </div>
                     
                 
 
